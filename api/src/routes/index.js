@@ -3,7 +3,8 @@ const { Router } = require('express');
 // Ejemplo: const authRouter = require('./auth.js');
 const diets = require('./diets')
 const recipes = require('./recipes')
-
+const recipe = require('./recipe')
+const types = require('./types')
 const router = Router();
 
 // Configurar los routers
@@ -11,6 +12,8 @@ const router = Router();
 
 router.use('/diets', diets);
 router.use('/recipes', recipes);
+router.use('/recipe', recipe);
+router.use('/types', types);
 
 
 // Pagina inicial: deben armar una landing page con
