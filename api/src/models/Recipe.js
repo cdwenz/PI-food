@@ -34,6 +34,10 @@ module.exports = (sequelize) => {
     step: {
       type: DataTypes.TEXT
     },
+    image:{
+      type: DataTypes.STRING,
+      defaultValue: "https://spoonacular.com/cdn/ingredients_100x100/chicken.jpg",
+    },
     fromDB: {
       type: DataTypes.BOOLEAN,
       defaultValue: true

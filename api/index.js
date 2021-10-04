@@ -1,6 +1,6 @@
 const server = require('./src/app.js');
 const { conn, Diet } = require('./src/db.js');
-const {preload} = require('./src/Diets/Store')
+const {preload} = require('./src/Components/Loader')
 
 // Syncing all the models at once.
 conn.sync({ force: false }).then(() => {

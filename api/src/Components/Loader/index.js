@@ -1,4 +1,4 @@
-const {Diet} = require('../db')
+const {Diet} = require('../../db')
 
 const diets = ['Gluten free',
             'Ketogenic',

@@ -1,5 +1,5 @@
 const router = require('express').Router();
-const {Diet} = require ('../db');
+const {Diet} = require ('../../db');
 
 router.get('/', async (req, res)=>{
     try{
