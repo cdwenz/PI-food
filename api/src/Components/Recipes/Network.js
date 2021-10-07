@@ -8,6 +8,7 @@ const {getRecipes, getRecipesById} = require('./Store')
 
 router.get('/', async(req, res) => {
     let response;
+    
 if(req.query.name){
     try{
         response =  await getRecipes(req.query.name);
@@ -20,6 +21,7 @@ if(req.query.name){
         response = await getRecipes();
         res.status(200).json(response)
     }catch({message: error}){
+        console.log(error)
         res.status(500).json(error)
     }
 }
@@ -27,6 +29,7 @@ if(req.query.name){
 
 router.get('/:id', async(req,res) => {
     let {id} = req.params;
+    
     try{
        let response = await getRecipesById(id); 
        res.json(response)
@@ -36,7 +39,7 @@ router.get('/:id', async(req,res) => {
 })
 
 router.post('/', async(req,res) => {
-    const {name, summary, score, health, step, dietName, image} = req.body;
+    const {name, summary, score, health, steps, dietName, image} = req.body;
    
     if(!name || !summary) return res.status(404).send('Name and Summary are required')
     try{
@@ -45,18 +48,15 @@ router.post('/', async(req,res) => {
             summary,
             score,
             health,
-            step,
+            steps,
             fromDB: true
         })
-        if(dietName){
-            let arrayDiet = await Diet.findAll({
-                where: {name: dietName}
+        if(dietName){//['gluten free, vegan]
+            let arrayDiet = await Diet.findAll({    //[{object de gluten free}, {object vegan}]
+                where: {name: dietName} 
             })
            recipe.addDiet(arrayDiet)
-            // dietName.forEach(async (element) =>{
-            //     const diet = await Diet.findOne({ where: { name: element } })
-            //     if(diet !== null) recipe.addDiet(diet)
-            // })
+
         }
         res.json(recipe);
     }catch(err){

@@ -1,6 +1,24 @@
+.divPrincipal{
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    width: 300px;
+    height: 300px;
+    margin: 4px 4px 4px 4px;
+    border: none;
+    padding: 10px;
+    background-color: #c5c1c1f8;
+    backdrop-filter: blur(16px);
+    border-radius: 20px;
+    font-size: 24px;
+    color: black;
+}
+.divPrincipal + .divPrincipal{
+    border-left: solid 10px #0000001e;
+    border-top: solid 10px #0000001e;
+}
 
-
-div img{
-    width:  1.5rem;
-    height: 1.5rem;
+.imgCard{
+    width: 8em;
+    height: 6em;
 }

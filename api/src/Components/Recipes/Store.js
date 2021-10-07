@@ -20,10 +20,10 @@ async function getRecipes(name){
 
     }else{  //Busqueda de Todas las recetas
         try{
-            recipeAPI = await axios.get(`https://api.spoonacular.com/recipes/complexSearch?apiKey=${API_KEY}&&addRecipeInformation=true&number=100`)
+            // recipeAPI = await axios.get(`https://api.spoonacular.com/recipes/complexSearch?apiKey=${API_KEY}&&addRecipeInformation=true&number=100`)
             recipeDB = await Recipe.findAll(
             {
-                attributes: ['id', 'name', 'summary', 'score','image', 'health', 'step'],
+                attributes: ['id', 'name', 'summary', 'score','image', 'health', 'steps'],
                 include: { model: Diet }
             }
         )
@@ -32,10 +32,10 @@ async function getRecipes(name){
     }
     //Normalizacion de la respuesta
     let recipes = [];
-    recipeAPI.data.results.forEach(element => {
-        const obj = normalizeRecipeAPI(element)
-        recipes.push(obj);
-    });
+    // recipeAPI.data.results.forEach(element => {
+    //     const obj = normalizeRecipeAPI(element)
+    //     recipes.push(obj);
+    // });
 
     recipeDB = normalizeRecipeDB(recipeDB)
     
@@ -48,15 +48,19 @@ async function getRecipesById(id){
     let recipeById;
     try{
         if(id.length === 36){//Busqueda por UUID
-            recipeById = await Recipe.findAll({
+            recipeById = await Recipe.findOne({
                 where:{ id: { [Op.eq]: id } },
                 include: { model: Diet, attributes: ['name', 'id']}
             })
             return recipeById;
         }else{//Busqueda por id
+            id = Number(id)
+            console.log(typeof id, id)
             recipeById = await axios.get(`https://api.spoonacular.com/recipes/${id}/information?apiKey=${API_KEY}`);
+            console.log('paso')
             recipeById = recipeById.data;
-            var recipe = normalizeRecipe(recipeById);
+            var recipe = normalizeRecipeAPI(recipeById);
+            console.log(recipe)
             return recipe;
         }
     }catch(e){

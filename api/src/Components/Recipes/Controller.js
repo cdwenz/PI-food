@@ -12,6 +12,10 @@ function normalizeRecipeDB(array){
     return aux;
 }
 
+function plain(word){
+    return word.replace(/[.!,()?]/g, "")
+}
+
 function normalizeRecipeAPI(element){
     const obj = {
         vegetarian: element.vegetarian,
@@ -25,6 +29,7 @@ function normalizeRecipeAPI(element){
         summary: element.summary,
         dishTypes: element.dishTypes,
         diets: element.diets,
+        // steps: element.analyzedInstructions[0].steps,
         fromDB: false
     }
     return obj;

@@ -1,11 +1,9 @@
-import { GET_ALL_RECIPES, GET_RECIPE_QUERY } from "./Types"
-
-
+import { GET_ALL_RECIPES, GET_RECIPE_QUERY, SET_PAGE } from "./Types"
 
 const initialState = {
     recipes: "",
-    recipeDetail: "",
-    diets: ""
+    recipesByQuery: "",
+    page: 1,
 }
 
 export default function rootReducer(state = initialState, {type, payload}){
@@ -18,7 +16,12 @@ export default function rootReducer(state = initialState, {type, payload}){
         case GET_RECIPE_QUERY:
             return {
                 ...state,
-                recipes: payload
+                recipesByQuery: payload
+            }
+        case SET_PAGE:
+            return {
+                ...state,
+                page: payload
             }
         default:
             return state

@@ -31,11 +31,11 @@ module.exports = (sequelize) => {
     health:{
       type: DataTypes.INTEGER
     },
-    step: {
-      type: DataTypes.TEXT
+    steps: {
+      type: DataTypes.STRING
     },
     image:{
-      type: DataTypes.STRING,
+      type: DataTypes.TEXT,
       defaultValue: "https://spoonacular.com/cdn/ingredients_100x100/chicken.jpg",
     },
     fromDB: {

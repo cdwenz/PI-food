@@ -1,16 +1,15 @@
 const {Diet} = require('../../db')
 
 const diets = ['Gluten free',
-            'Ketogenic',
-            'Vegetarian',
-            'Lacto-Vegetarian',
-            'Ovo-Vegetarian',
-            'Vegan',
-            'Pescetarian',
-            'Paleo',
-            'Primal',
-            'Low FODMAP',
-            'Whole30'];
+            'dairy free',
+            'paleolithic',
+            'ketogenic',
+            'lacto ovo vegetarian',
+            'vegan',
+            'pescatarian',
+            'primal',
+            'fodmap friendly',
+            'whole 30'];
             
 function preload(element) {
     if(!element.length){

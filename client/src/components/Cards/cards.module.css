@@ -1,3 +1,28 @@
-.card{
-    
+.div{
+    width: 80vw;
+    height: 80vh;
+    margin: 2vh 2vw;
+    top: 0;
+    /* display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: 5vh 55vh 20vh; */
+    justify-content: center;
 }
+
+.divCards{
+    display: flex;
+    /* flex-direction: row; */
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 30px;
+    margin-top: 7%;
+}
+
+.btns{
+    /* grid-row: 1; */
+    justify-self: center;
+}
+/* .divCards{
+    position: relative;
+}  */

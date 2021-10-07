@@ -1,5 +1,6 @@
 
-import { GET_ALL_RECIPES, GET_RECIPE_QUERY } from "./Types"
+import axios from "axios"
+import { GET_ALL_RECIPES, GET_RECIPE_QUERY, SET_PAGE } from "./Types"
 
 export function getAllRecipes(){
     return function(dispatch){
@@ -18,4 +19,22 @@ export function getRecipeQuery(name){
                 dispatch({type: GET_RECIPE_QUERY, payload: json})
             })
     }
+}
+
+export function setPage(payload){
+    return{
+        type: SET_PAGE,
+        payload}
+}
+
+export async function postRecipe(list){
+   try{
+        let response = await axios.post(`http://localhost:3001/recipes`, list);
+        response = response.data;
+        console.log('axios.post :', response);
+        return true;
+   }catch({message: error}){
+        return false;
+   }
+    
 }
