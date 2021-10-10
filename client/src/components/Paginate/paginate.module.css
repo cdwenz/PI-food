@@ -1,3 +1,7 @@
 .prev, .next{
     border-radius: 12px;
   }
+
+.divPaginate{
+  text-align: center;
+}

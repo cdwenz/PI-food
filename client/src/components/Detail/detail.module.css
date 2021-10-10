@@ -1,44 +1,28 @@
 .detail{
-  background-image: url("../../img/edgar-castrejon.jpg");
-  background-size: cover;
-  position: absolute;
-  text-align: center;
-}
-
-.detailContainer{
-  width: 90vw;
-  height: 90vh;
-  margin: 5vh 5vw;
-  top: 0;
-  position: absolute;
+  position: relative;
+  width: 80vw;
+  /* height: 80vh; */
+  margin: 5vh 20vw;
   border-radius: 10px;
   border-style: solid;
   justify-content: center;
   background-color: #77777770;
-  max-width: 700px;
-  max-height: 700px;
-  /* display: grid;
-  grid-template-columns: 50vw 50vw;
-  grid-template-rows: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr; */
-  /* max-width: 500px;
-  max-height: 500px; */
+  backdrop-filter: blur(30px);
+  max-width: 800px;
+  font-size: small;
 }
 
 .img{
   width: 40vw;
   height: 50vh;
+  padding: 15px;
   border-radius: 25px;
   justify-self: center;
   max-width: 200px;
   max-height: 200px;
-  /* grid-column: 1; */
-  /* grid-row-start: 2;
-  grid-row-end: 7; */
 }
 
-.bkg{
-  width: 100vw;
-  height: 100vh;
-  backdrop-filter: blur(16px);
-  background-color: transparent;
+.nameSummary{
+  display: flex;
+  flex-direction: row;
 }

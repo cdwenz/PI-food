@@ -2,11 +2,14 @@
     border-color: red;
 }
 .container{
-    width: 80%;
+    width: 50%;
     height: 80%;
+    padding-left: 20px;
+    padding-bottom: 20px;
+    border-radius: 16px;
     background-color: #77777766;
     backdrop-filter: blur(16px);
-    margin: 0 15%;
+    margin: 0 25%;
     text-align: center;
 }
 .divCreate{
@@ -20,16 +23,26 @@
   align-content: center;
 }
 .diets{
-    align-content: right !important;
+    display: flex;
+    flex-direction: column;
+    text-align: justify;
 }
 input{
     max-width: 200px;
     margin-bottom: 5px;
+    border-radius: 5px;
 }
 
 textarea{
     max-width: 400px;
+    border-radius: 5px;
 }
 
+.btnCreate{
+    margin-top: 15px;
+    border-radius: 5px;
+    height: 30px;
+
+}
 
 

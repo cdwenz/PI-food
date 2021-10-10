@@ -16,7 +16,7 @@ export default function Search(props){
         } 
         get(name)
         
-    },[])
+    },[name, dispatch])
 
     return (
         <>

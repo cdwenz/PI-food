@@ -60,12 +60,10 @@ async function getRecipesById(id){
             var recipe = normalizeRecipeAPI(recipeById);
             let stepToStep = [];
             recipe.steps?.steps.forEach(e=>{
-                let objeto = {number: e.number, step: e.step}
-                stepToStep.push(objeto)
+                // let objeto = {number: e.number, step: e.step}
+                stepToStep.push(e.step)
             })
-            console.log(recipe.steps)
             recipe.steps = stepToStep
-            console.log(recipe.steps)
             return recipe;
         }
     }catch(e){

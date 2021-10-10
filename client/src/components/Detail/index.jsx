@@ -17,26 +17,31 @@ export default function Detail(props){
     console.log(rec);
     return (
         <div className={styles.detail}>
-            <div className={styles.bkg} />
-            <div className={styles.detailContainer}>
-                <h1>{rec.name}</h1>
-                <span><img className={styles.img} src={rec.image} alt=""/></span>
-            </div>
-            <div>
-                <p dangerouslySetInnerHTML={{ __html: rec.summary }} />
-            </div>
-            <div>
-                <ul>
-                {
-                Array.isArray(rec.steps)
-                ?
-                    rec.steps.map(e=>{
-                       return<li>{e.number}:{e.step}</li>
-                    })
-                :
-                    <h1>nada</h1>
-                }
-                </ul>
+           <div >
+                        <h1>{rec.name}</h1>
+               <div className={styles.nameSummary}>
+                    <div>
+                        <span><img className={styles.img} src={rec.image} alt=""/></span>
+                    </div>
+                    <div>
+                        <p dangerouslySetInnerHTML={{ __html: rec.summary }} />
+                    </div>
+                </div>
+                <div>
+                    <div>
+                        <ul>
+                        {
+                        Array.isArray(rec.steps)
+                        ?
+                            rec.steps.map(e=>{
+                            return<li>{e}</li>
+                            })
+                        :
+                            <h1>nada</h1>
+                        }
+                        </ul>
+                    </div>
+                </div>
             </div>
         </div>
     )

@@ -15,7 +15,9 @@
     overflow: hidden;
     position: relative;
 }
-
+.inputSearch{
+    padding-top: 5px;
+}
 .container{
     position: absolute;
     background-color: #ffffcc;
@@ -66,4 +68,9 @@
     background-color:#eee;
     backdrop-filter: blur(16px);
     color: rgb(0, 167, 0);
+}
+
+:active.navlink{
+    text-decoration: none;
+    color:red
 }

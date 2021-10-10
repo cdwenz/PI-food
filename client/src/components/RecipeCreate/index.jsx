@@ -69,7 +69,7 @@ export default function RecipeCreate(){
        })
    }
     return (
-        <div className={styles.container}>
+    <div className={styles.container}>
             <h1>Recipe Create</h1>
         <div className={styles.divCreate}>
             <div className={styles.divform}>
@@ -83,25 +83,26 @@ export default function RecipeCreate(){
                     <input type="number" name="health" placeholder="Health Score (0-100)" className={errors.health && styles.error} value={list.health}/>
                     <label>Steps</label>
                     <textarea rows = "5" cols = "60" name = "step" placeholder ="Enter Steps here..." value={list.step} />
+                    <button type="submit" className={styles.btnCreate} disabled={errors.name || errors.summary || errors.score || errors.health ? true : false} >Create</button>
                     
-                    <button type="submit" disabled={errors.name || errors.summary || errors.score || errors.health ? true : false} >Create</button>
                 </form>
             </div>
-            <div className={styles.diets}><ul>
+            <div ><ul className={styles.diets}>
                         {
                         diets.length > 0
                         ?
                             diets.map((e,index) => {
-                                return <div key={index} className={styles.switchContainer}>
-                                    <input type="checkbox" className="checks" id={e}/>
-                                <label htmlFor={e} >{e}</label>
+                                return <div>
+                                    <input type="checkbox" className="checks" id={e} />
+                                    <label htmlFor={e} >{e}</label>
                                 </div> 
                             })
                         :
                             <h3>diets</h3>
                         }
-                    </ul></div>
-                    </div>
+                    </ul>
+            </div>
         </div>
+    </div>
     )
 }
