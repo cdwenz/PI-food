@@ -1,26 +1,30 @@
-import axios from "axios";
-import { useEffect, useState } from "react"
+import { useState } from "react"
+import { useSelector } from "react-redux";
 import { postRecipe } from "../../Dispatch/actions";
 import styles from './recipeCreate.module.css'
 
+function validate(input){
+    let error = {};
+    if(!input.name) error.name = "Title is required";
+    if(!input.summary) error.summary = "Summary is required";
+    if(input.score > 100 || input.score < 0) error.score = "score are must 0-100";
+    if(input.health > 100 || input.health < 0) error.health = "health are must 0-100";
+    
+    return error;
+}
+
 export default function RecipeCreate(){
-   
-    const [diets, setDiets] = useState("");
-    const [list, setList] = useState({
+    const diets = useSelector(state => state.diets)
+    const [errors, setErrors] = useState({name:"initial"});
+    const object = {
         name: "",
         summary: "",
         score:"",
         health: "",
         step: "",
         dietName: []
-    });
-    useEffect(()=>{
-        async function getTypes(){
-            const response = await axios.get(`http://localhost:3001/types`)
-            setDiets(response.data)
-        } 
-        getTypes()
-    },[])
+    }
+    const [list, setList] = useState(object);
 
    function handleChange(e){
     e.target.type === 'checkbox'
@@ -41,70 +45,63 @@ export default function RecipeCreate(){
             ...list,
             [e.target.name]: e.target.value
         })
-        console.log(list.dietName)
+        setErrors(validate({
+            ...list,
+            [e.target.name]: e.target.value
+        }))
    }
    async function handleSubmit(e){
        e.preventDefault();
-       console.log(list)
        const flag = await postRecipe(list)
-       flag === true ? alert('Recipe load fullfiled') : alert('hubo un error en la carga')
+       setList(object);
+       cleanChecks();
+       flag === true 
+       ? 
+       alert('Recipe load fullfiled') 
+       : 
+       alert('hubo un error en la carga')
    }
-
-//    function lblChecked(e, index){
-//        let flag = document.getElementById(index+'chk').checked
-//         document.getElementById(index+'chk').checked = !flag;
-//         document.getElementById(index+'chk').checked === true 
-//         ? 
-//         setList({
-//             ...list,
-//             dietName: [...list.dietName, e.target.value]
-//         })
-//         :
-//         setList({
-//             ...list,
-//             dietName: list.dietName.filter(diet => diet !== e.target.value)
-//         })
-//         console.log(list.dietName)
-//         return <div key={index} className={styles.switchContainer}>
-//                                     <input type="checkbox" id={index + 'chk'} className={styles.switch} value={e}/>
-//                                 <label htmlFor="switch" value={index + 'lbl'} className={styles.lbl} onClick={(e) => lblChecked(e, index)}></label>
-//                                 {e}</div> 
-//    }
-
+   function cleanChecks(){
+       diets.forEach((diet)=>{
+            if(document.getElementById(diet).checked === true ){
+                document.getElementById(diet).checked = false
+            }
+       })
+   }
     return (
-        <div >
+        <div className={styles.container}>
             <h1>Recipe Create</h1>
+        <div className={styles.divCreate}>
             <div className={styles.divform}>
                 <form className={styles.form} onChange={(e)=>handleChange(e)} onSubmit={handleSubmit}>
-                    <label>Title</label>
-                    <input type="text" name="name"></input>
-                    <label>Summary</label>
-                    <input type="text" name="summary"></input>
-                    <label>Score</label>
-                    <input type="number" name="score"></input>
-                    <label>Health Score</label>
-                    <input type="number" name="health" placeholder="0-100"></input>
+                    <input type="text" name="name" placeholder="Title"
+                        className={errors.name && styles.error} value={list.name}/>
+                    <input type="text" name="summary" placeholder="Summary"
+                        className={errors.summary && styles.error} value={list.summary}/>
+                    <input type="number" name="score" placeholder="Score (0-100)" className={errors.score && styles.error} value={list.score}/>
+                    
+                    <input type="number" name="health" placeholder="Health Score (0-100)" className={errors.health && styles.error} value={list.health}/>
                     <label>Steps</label>
-                    <textarea rows = "5" cols = "60" name = "step" placeholder ="Enter Steps here..."/>
-                    <ul>
+                    <textarea rows = "5" cols = "60" name = "step" placeholder ="Enter Steps here..." value={list.step} />
+                    
+                    <button type="submit" disabled={errors.name || errors.summary || errors.score || errors.health ? true : false} >Create</button>
+                </form>
+            </div>
+            <div className={styles.diets}><ul>
                         {
                         diets.length > 0
                         ?
                             diets.map((e,index) => {
                                 return <div key={index} className={styles.switchContainer}>
-                                    <input type="checkbox" id={e}/>
+                                    <input type="checkbox" className="checks" id={e}/>
                                 <label htmlFor={e} >{e}</label>
                                 </div> 
                             })
                         :
                             <h3>diets</h3>
                         }
-                    </ul>
-                   
-                    <button type="submit">Create</button>
-                </form>
-               
-            </div>
+                    </ul></div>
+                    </div>
         </div>
     )
 }

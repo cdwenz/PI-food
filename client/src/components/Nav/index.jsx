@@ -1,32 +1,23 @@
 import { NavLink } from "react-router-dom";
 import styles from "./nav.module.css"
 import img from "../../img/cookdarkgreen.svg"
-import Search from "../Search";
 import { useDispatch, useSelector } from "react-redux";
-import { useState } from "react";
-import { getRecipeQuery } from "../../Dispatch/actions";
+import { setSearch } from "../../Dispatch/actions";
 
 
 export default function Nav(){
-    
+    const search = useSelector(state => state.search)
     const dispatch = useDispatch();
-    const state = useSelector(state => state.recipesByQuery)
-    const [select, setSelect] = useState("");
-    
-    
-    function handleChange(e){
-      setSelect(e.target.value)
+
+    async function handleChange(e){
+      dispatch(await setSearch(e.target.value))
     }
   
-    async function handleSubmit(e){
-      e.preventDefault();
-      if(select === "") alert('text required');
-      else dispatch(await getRecipeQuery(select))
-      setSelect("");
-    }
-  
+    
     return(
-        <header className={styles.navbar}>
+        <header className={styles.navbar} id="Nav">
+            
+            {/* <div className={styles.container}> */}
                     <div><img className={styles.img} src={img} alt="" /></div>
             
                 <div className={styles.div}>
@@ -38,20 +29,20 @@ export default function Nav(){
                     </ul>
                 </div>
                 <div>
-                    <form className="form-container" onSubmit={(e) => handleSubmit(e)}>
+                    <form className="form-container">
                     <input
                     type="text"
                     id="title"
                     placeholder="Search Recipe"
                     autoComplete="off"
-                    value={select}
+                    value={search}
                     onChange={(e) => handleChange(e)}
                     />
-                {/* <NavLink to="/search"><span onClick={handleSubmit}>buscar</span></NavLink> */}
-                    <button type="submit">SEARCH</button>
                     </form>
                 
                 </div>
+                <NavLink to={`/search/${search}`}>buscar</NavLink>
+            {/* </div> */}
         </header>
     )
 }

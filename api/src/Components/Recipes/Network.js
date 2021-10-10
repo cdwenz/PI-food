@@ -40,7 +40,7 @@ router.get('/:id', async(req,res) => {
 
 router.post('/', async(req,res) => {
     const {name, summary, score, health, steps, dietName, image} = req.body;
-   
+ 
     if(!name || !summary) return res.status(404).send('Name and Summary are required')
     try{
         const recipe = await Recipe.create({
@@ -49,8 +49,8 @@ router.post('/', async(req,res) => {
             score,
             health,
             steps,
-            fromDB: true
         })
+       
         if(dietName){//['gluten free, vegan]
             let arrayDiet = await Diet.findAll({    //[{object de gluten free}, {object vegan}]
                 where: {name: dietName} 

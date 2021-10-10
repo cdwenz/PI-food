@@ -1,16 +1,12 @@
 import styles from './card.module.css'
 
-function keyRandom(value){
-    return Math.round(Math.random*value*10)
-}
-
-export default function Card({recipe, page}){
+export default function Card({recipe}){
     return(
         <div className={styles.divPrincipal}>
         <span>{recipe.name}</span>
         <img className={styles.imgCard} src={recipe.image} alt=""/>
         
-        <span>{recipe.diets}</span>
+        <p className={styles.diets}>{recipe.diets}</p>
         {/* {
             recipe.diets.map((rec, index) => {
                  return <span key={index} className={styles.temp}>{rec} | </span>

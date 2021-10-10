@@ -1,37 +1,35 @@
-
-
-.lbl{
-    display: inline-block;
-    width: 28px;
-    height: 17px;
-    background:darkgray;
-    border-radius: 16px;
-    cursor: pointer;
-    position: relative;
+.error{
+    border-color: red;
+}
+.container{
+    width: 80%;
+    height: 80%;
+    background-color: #77777766;
+    backdrop-filter: blur(16px);
+    margin: 0 15%;
+    text-align: center;
+}
+.divCreate{
+    display: flex;
+    flex-direction: row;
+}
+.form{
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: column;
+  align-content: center;
+}
+.diets{
+    align-content: right !important;
+}
+input{
+    max-width: 200px;
+    margin-bottom: 5px;
 }
 
-.lbl::after{
-    content: '';
-    display: block;
-    width: 12px;
-    height: 12px;
-    background: rgb(245, 245, 245);
-    border-radius: 100%;
-    position: absolute;
-    top: 2px;
-    left: 2px;
+textarea{
+    max-width: 400px;
 }
 
-.switch:checked + .lbl::after{
-    left: 13px;
-}
-.switch:checked + .lbl{
-    background: turquoise;
-}
 
-.id:checked + .lbl::after{
-    left: 13px;
-}
-.id:checked + .lbl{
-    background: turquoise;
-}
+

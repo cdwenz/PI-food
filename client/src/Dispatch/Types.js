@@ -1,4 +1,9 @@
 export const GET_ALL_RECIPES = "GET_ALL_RECIPES";
 export const GET_RECIPES_ID = "GET_RECIPES_ID";
 export const GET_RECIPE_QUERY = "GET_RECIPE_QUERY";
-export const SET_PAGE = "SET_PAGE"
+export const SET_PAGE = "SET_PAGE";
+export const SET_SEARCH = "SET_SEARCH";
+export const GET_DIETS = "GET_DIETS";
+export const ORDER = "ORDER";
+export const ORDER_SCORE = "ORDER_SCORE";
+export const ORDER_DIET ="ORDER_DIET";

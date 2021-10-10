@@ -20,7 +20,7 @@ async function getRecipes(name){
 
     }else{  //Busqueda de Todas las recetas
         try{
-            // recipeAPI = await axios.get(`https://api.spoonacular.com/recipes/complexSearch?apiKey=${API_KEY}&&addRecipeInformation=true&number=100`)
+            recipeAPI = await axios.get(`https://api.spoonacular.com/recipes/complexSearch?apiKey=${API_KEY}&&addRecipeInformation=true&number=5`)
             recipeDB = await Recipe.findAll(
             {
                 attributes: ['id', 'name', 'summary', 'score','image', 'health', 'steps'],
@@ -32,10 +32,10 @@ async function getRecipes(name){
     }
     //Normalizacion de la respuesta
     let recipes = [];
-    // recipeAPI.data.results.forEach(element => {
-    //     const obj = normalizeRecipeAPI(element)
-    //     recipes.push(obj);
-    // });
+    recipeAPI.data.results.forEach(element => {
+        const obj = normalizeRecipeAPI(element)
+        recipes.push(obj);
+    });
 
     recipeDB = normalizeRecipeDB(recipeDB)
     
@@ -55,12 +55,17 @@ async function getRecipesById(id){
             return recipeById;
         }else{//Busqueda por id
             id = Number(id)
-            console.log(typeof id, id)
             recipeById = await axios.get(`https://api.spoonacular.com/recipes/${id}/information?apiKey=${API_KEY}`);
-            console.log('paso')
             recipeById = recipeById.data;
             var recipe = normalizeRecipeAPI(recipeById);
-            console.log(recipe)
+            let stepToStep = [];
+            recipe.steps?.steps.forEach(e=>{
+                let objeto = {number: e.number, step: e.step}
+                stepToStep.push(objeto)
+            })
+            console.log(recipe.steps)
+            recipe.steps = stepToStep
+            console.log(recipe.steps)
             return recipe;
         }
     }catch(e){

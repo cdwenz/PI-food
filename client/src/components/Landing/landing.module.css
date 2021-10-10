@@ -1,6 +1,6 @@
 .app{
     top: 0;
-    bottom: 0;
+    /* bottom: 0; */
     right: 0;
     left: 0;
   }
@@ -17,6 +17,7 @@
   height: 80vh;
   margin: 10vh 10vw;
   top: 0;
+  justify-self: center;
   overflow: hidden;
   display: grid;
   grid-template-columns: 1fr;
@@ -86,11 +87,6 @@
   background-color: #918b8bad;
 }
 
-NavLink, NavLink:active, NavLink::before{
-  color: white;
-  text-decoration: none;
-  
-}
 .selected{
   color:red;
 }

@@ -2,16 +2,17 @@
     display: flex;
     align-items: center;
     flex-direction: column;
-    width: 300px;
-    height: 300px;
+    width: 200px;
+    height: 200px;
     margin: 4px 4px 4px 4px;
     border: none;
     padding: 10px;
-    background-color: #c5c1c1f8;
+    background-color: #ffffff56;
     backdrop-filter: blur(16px);
     border-radius: 20px;
-    font-size: 24px;
+    font-size: 18px;
     color: black;
+    text-decoration: none;
 }
 .divPrincipal + .divPrincipal{
     border-left: solid 10px #0000001e;
@@ -19,6 +20,10 @@
 }
 
 .imgCard{
-    width: 8em;
-    height: 6em;
+    width: 50%;
+    height: 40%;
+}
+
+.diets{
+    font-size: 10px;
 }

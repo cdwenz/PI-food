@@ -1,8 +1,12 @@
 import React from "react";
 import styles from "./landing.module.css";
 import {NavLink} from "react-router-dom"
+import { useEffect } from "react";
 
 export default function Landing(){
+    useEffect(()=>{
+        
+    })
     
     return (
         <div className={styles.app}>

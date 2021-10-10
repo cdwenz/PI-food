@@ -1,14 +1,13 @@
-.div{
-    width: 80vw;
-    height: 80vh;
-    margin: 2vh 2vw;
-    top: 0;
-    /* display: grid;
-    grid-template-columns: 1fr;
-    grid-template-rows: 5vh 55vh 20vh; */
-    justify-content: center;
-}
 
+.divContain{
+  /* top: 0;
+  right: 0;
+  left: 0;
+  bottom: 0;
+  text-align-last: center;
+  background-image: url('../../img/george-zheng-0Kbjfwunink-unsplash.jpg');
+  background-size: cover; */
+}
 .divCards{
     display: flex;
     /* flex-direction: row; */
@@ -16,13 +15,29 @@
     justify-content: center;
     flex-wrap: wrap;
     gap: 30px;
-    margin-top: 7%;
 }
-
+.link{
+    text-decoration: none;
+}
 .btns{
     /* grid-row: 1; */
-    justify-self: center;
+    border-radius: 100%;
+    background-color: #fff;
+    backdrop-filter: blur(5px);
+    width: 25px;
+    height: 25px;
+    padding: 10px;
+    text-align: center;
 }
-/* .divCards{
-    position: relative;
-}  */
+.btns:hover{
+    /* grid-row: 1; */
+    border-radius: 100%;
+    background-color: #77777770;
+    backdrop-filter: blur(5px);
+    size:15px;
+    cursor: pointer;
+}
+
+.prev, .next{
+  border-radius: 12px;
+}

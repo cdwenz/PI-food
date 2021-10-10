@@ -17,6 +17,7 @@ function plain(word){
 }
 
 function normalizeRecipeAPI(element){
+   
     const obj = {
         vegetarian: element.vegetarian,
         vegan: element.vegan,
@@ -29,8 +30,7 @@ function normalizeRecipeAPI(element){
         summary: element.summary,
         dishTypes: element.dishTypes,
         diets: element.diets,
-        // steps: element.analyzedInstructions[0].steps,
-        fromDB: false
+        steps: element.analyzedInstructions?element.analyzedInstructions[0]:null
     }
     return obj;
 }

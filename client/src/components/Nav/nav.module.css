@@ -3,7 +3,8 @@
     width: 100%;
     top: 0;
     left: 0;
-    background-color: transparent;
+    background-color:#77777770;
+    backdrop-filter: blur(10px);
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -12,8 +13,14 @@
     font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
     font:500;
     overflow: hidden;
+    position: relative;
 }
 
+.container{
+    position: absolute;
+    background-color: #ffffcc;
+    backdrop-filter: blur(3px);
+}
 .navbar nav {
     height: 100%;
 }

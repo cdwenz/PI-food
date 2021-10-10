@@ -1,8 +1,5 @@
-import { useState } from "react"
-import { getRecipeQuery} from "../../Dispatch/actions";
-import {useDispatch, useSelector} from "react-redux"
+import {useSelector} from "react-redux"
 import Cards from "../Cards/Cards";
-import styles from './home.module.css'
 
 export default function Home(){
   

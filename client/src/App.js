@@ -6,23 +6,26 @@ import Detail from './components/Detail';
 import Home from './components/Home/home';
 import RecipeCreate from './components/RecipeCreate';
 import { useDispatch } from 'react-redux';
-import { getAllRecipes } from './Dispatch/actions';
+import { getAllRecipes, getDiets } from './Dispatch/actions';
 import Search from './components/Search';
 import styles from './App.module.css';
 
 function App() {
   const dispatch = useDispatch();
   useEffect(()=>{
-    dispatch(getAllRecipes())
+    dispatch(getAllRecipes());
+    dispatch(getDiets());
   },[dispatch])
 
   return (
     <div className={styles.app}>
+      
       <Route exact path="/" component={Landing}/>
-      <Nav />
+      <Route path="/:algo" component={Nav}/>
       <Route exact path="/home" component={Home}/>
       <Route exact path="/home/:id" component={Detail}/>
       <Route exact path="/search" component={Search}/>
+      <Route exact path="/search/:name" component={Search}/>
       <Route exact path="/recipeCreate" component={RecipeCreate}/>
    
     </div>

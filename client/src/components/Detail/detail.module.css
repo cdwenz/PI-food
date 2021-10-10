@@ -1,33 +1,44 @@
-.multiselect {
-    width: 200px;
-  }
-  
-  .selectBox {
-    position: relative;
-  }
-  
-  .selectBox select {
-    width: 100%;
-    font-weight: bold;
-  }
-  
-  .overSelect {
-    position: absolute;
-    left: 0;
-    right: 0;
-    top: 0;
-    bottom: 0;
-  }
-  
-  #checkboxes {
-    display: none;
-    border: 1px #dadada solid;
-  }
-  
-  #checkboxes label {
-    display: block;
-  }
-  
-  #checkboxes label:hover {
-    background-color: #1e90ff;
-  }
+.detail{
+  background-image: url("../../img/edgar-castrejon.jpg");
+  background-size: cover;
+  position: absolute;
+  text-align: center;
+}
+
+.detailContainer{
+  width: 90vw;
+  height: 90vh;
+  margin: 5vh 5vw;
+  top: 0;
+  position: absolute;
+  border-radius: 10px;
+  border-style: solid;
+  justify-content: center;
+  background-color: #77777770;
+  max-width: 700px;
+  max-height: 700px;
+  /* display: grid;
+  grid-template-columns: 50vw 50vw;
+  grid-template-rows: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr; */
+  /* max-width: 500px;
+  max-height: 500px; */
+}
+
+.img{
+  width: 40vw;
+  height: 50vh;
+  border-radius: 25px;
+  justify-self: center;
+  max-width: 200px;
+  max-height: 200px;
+  /* grid-column: 1; */
+  /* grid-row-start: 2;
+  grid-row-end: 7; */
+}
+
+.bkg{
+  width: 100vw;
+  height: 100vh;
+  backdrop-filter: blur(16px);
+  background-color: transparent;
+}

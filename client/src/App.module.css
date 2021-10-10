@@ -1,11 +1,35 @@
+body{
+  background-image: url("../src/img/george-zheng-0Kbjfwunink-unsplash.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-attachment: fixed;
+  box-sizing: border-box;
+}
+
 .app{
   top: 0;
   bottom: 0;
   right: 0;
   left: 0;
-  background-color: rgb(250, 249, 249);
+  height: fit-content;
+  background-image: url("../src/img/george-zheng-0Kbjfwunink-unsplash.jpg");
+  background-color: #ffffff56;
+  background-size:cover;
+  background-attachment: fixed;
+  background-repeat: no-repeat;
+  backdrop-filter: blur(16px);
   position: absolute;
+  min-width: 80%;
 }
 .container{
-  
+  width: 100vw;
+  height: 100vh;
+  margin: 0;
+  top: 0;
+  position: absolute;
+  background-color: #ffffff56;
+  backdrop-filter: blur(3px);
+  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+  /* overflow: hidden; */
 }
+
