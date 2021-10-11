@@ -1,6 +1,7 @@
 import { useState } from "react"
-import { useSelector } from "react-redux";
-import { postRecipe } from "../../Dispatch/actions";
+import { useDispatch, useSelector } from "react-redux";
+import { getAllRecipes, postRecipe } from "../../Dispatch/actions";
+import DietsIcons from "../DietsIcons";
 import styles from './recipeCreate.module.css'
 
 function validate(input){
@@ -15,6 +16,7 @@ function validate(input){
 
 export default function RecipeCreate(){
     const diets = useSelector(state => state.diets)
+    const dispatch = useDispatch();
     const [errors, setErrors] = useState({name:"initial"});
     const object = {
         name: "",
@@ -33,12 +35,12 @@ export default function RecipeCreate(){
         ? 
         setList({
             ...list,
-            dietName: [...list.dietName, e.target.value]
+            dietName: [...list.dietName, e.target.id]
         })
         :
         setList({
             ...list,
-            dietName: list.dietName.filter(diet => diet !== e.target.value)
+            dietName: list.dietName.filter(diet => diet !== e.target.id)
         }))
         
     :   setList({
@@ -49,10 +51,11 @@ export default function RecipeCreate(){
             ...list,
             [e.target.name]: e.target.value
         }))
-   }
+    }
    async function handleSubmit(e){
        e.preventDefault();
-       const flag = await postRecipe(list)
+       const flag = await postRecipe(list);
+       dispatch(getAllRecipes());
        setList(object);
        cleanChecks();
        flag === true 
@@ -82,24 +85,26 @@ export default function RecipeCreate(){
                     
                     <input type="number" name="health" placeholder="Health Score (0-100)" className={errors.health && styles.error} value={list.health}/>
                     <label>Steps</label>
-                    <textarea rows = "5" cols = "60" name = "step" placeholder ="Enter Steps here..." value={list.step} />
+                    <textarea rows = "8"  name = "step" placeholder ="Enter Steps here..." value={list.step} />
                     <button type="submit" className={styles.btnCreate} disabled={errors.name || errors.summary || errors.score || errors.health ? true : false} >Create</button>
-                    
                 </form>
+                    
             </div>
             <div ><ul className={styles.diets}>
+                <form onChange={(e)=>handleChange(e)}>
                         {
-                        diets.length > 0
+                            diets.length > 0
                         ?
-                            diets.map((e,index) => {
+                        diets.map((e,index) => {
                                 return <div>
                                     <input type="checkbox" className="checks" id={e} />
                                     <label htmlFor={e} >{e}</label>
                                 </div> 
                             })
-                        :
+                            :
                             <h3>diets</h3>
                         }
+                        </form>
                     </ul>
             </div>
         </div>

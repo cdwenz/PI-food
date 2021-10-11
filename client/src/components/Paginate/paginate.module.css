@@ -1,7 +1,41 @@
 .prev, .next{
-    border-radius: 12px;
+    border-radius: 5px;
+    text-align: center;
+    width: 55px;
+    height: 20px;
+    font-size: 11px;
+  }
+.prev:hover,
+.next:hover{
+    border-radius: 5px;
+    text-align: center;
+    width: 65px;
+    height: 25px;
+    font-size: 15px;
+    background-color: #00000056;
+    color:antiquewhite;
   }
 
 .divPaginate{
   text-align: center;
+  height: 25px;
+  margin-top: 10px;
+  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
 }
+
+.btns{
+  text-align: center;
+  width: 25px;
+  height: 20px;
+  font-size: 11px;
+  border-radius: 5px;
+}
+.btns:hover{
+  text-align: center;
+  width: 35px;
+  height: 25px;
+  font-size: 15px;
+  background-color: #00000056;
+  color:antiquewhite;
+}
+

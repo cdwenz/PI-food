@@ -11,6 +11,19 @@ function normalizeRecipeDB(array){
     })
     return aux;
 }
+function normalizeRecipeDBbyID(object){
+    // console.log('ACA',object)
+    
+    let dietDB = object.dataValues.diets.map(el => el.dataValues.name)
+    console.log('dietDB', dietDB)
+    let obj = {
+        ...object.dataValues,
+        diets: dietDB
+    }
+    
+  
+    return obj;
+}
 
 function plain(word){
     return word.replace(/[.!,()?]/g, "")
@@ -37,5 +50,6 @@ function normalizeRecipeAPI(element){
 
 module.exports = {
     normalizeRecipeAPI,
-    normalizeRecipeDB
+    normalizeRecipeDB,
+    normalizeRecipeDBbyID
 }

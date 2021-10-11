@@ -55,7 +55,7 @@ export function Filtered({value}){
                 <h3>diets</h3>
         }
         </select>
-        <button onClick={onClickClear}>Clear Filters</button>
+        <button onClick={onClickClear} className={styles.btnFilter}>Clear Filters</button>
     </div>
      )
 }

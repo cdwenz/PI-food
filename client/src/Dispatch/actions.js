@@ -34,6 +34,7 @@ export function getDiets(){
 export async function postRecipe(list){
    try{
         await axios.post(`http://localhost:3001/recipes`, list);
+        await getAllRecipes();
         return true;
    }catch({message: error}){
         return false;

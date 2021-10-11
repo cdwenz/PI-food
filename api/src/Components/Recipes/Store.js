@@ -1,7 +1,7 @@
 const {API_KEY} = process.env;
 const {Op} = require('sequelize');
 const {Recipe, Diet} = require ('../../db');
-const {normalizeRecipeAPI, normalizeRecipeDB} = require('./Controller');
+const {normalizeRecipeAPI, normalizeRecipeDB, normalizeRecipeDBbyID} = require('./Controller');
 const axios = require('axios');
 
 async function getRecipes(name){
@@ -20,7 +20,7 @@ async function getRecipes(name){
 
     }else{  //Busqueda de Todas las recetas
         try{
-            recipeAPI = await axios.get(`https://api.spoonacular.com/recipes/complexSearch?apiKey=${API_KEY}&&addRecipeInformation=true&number=5`)
+            recipeAPI = await axios.get(`https://api.spoonacular.com/recipes/complexSearch?apiKey=${API_KEY}&&addRecipeInformation=true&number=100`)
             recipeDB = await Recipe.findAll(
             {
                 attributes: ['id', 'name', 'summary', 'score','image', 'health', 'steps'],
@@ -50,8 +50,11 @@ async function getRecipesById(id){
         if(id.length === 36){//Busqueda por UUID
             recipeById = await Recipe.findOne({
                 where:{ id: { [Op.eq]: id } },
-                include: { model: Diet, attributes: ['name', 'id']}
+                include: { model: Diet}
             })
+            // console.log('antes del normalize', recipeById)
+            recipeById = normalizeRecipeDBbyID(recipeById)
+            console.log(recipeById)
             return recipeById;
         }else{//Busqueda por id
             id = Number(id)

@@ -32,11 +32,10 @@ module.exports = (sequelize) => {
       type: DataTypes.INTEGER
     },
     steps: {
-      type: DataTypes.STRING
+      type: DataTypes.JSON
     },
     image:{
       type: DataTypes.TEXT,
-      defaultValue: "https://spoonacular.com/cdn/ingredients_100x100/chicken.jpg",
     }
   },{
     timestamps: false

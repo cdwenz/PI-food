@@ -40,7 +40,7 @@ router.get('/:id', async(req,res) => {
 
 router.post('/', async(req,res) => {
     const {name, summary, score, health, steps, dietName, image} = req.body;
- 
+    console.log(dietName)
     if(!name || !summary) return res.status(404).send('Name and Summary are required')
     try{
         const recipe = await Recipe.create({

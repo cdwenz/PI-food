@@ -1,6 +1,6 @@
 const {Diet} = require('../../db')
 
-const diets = ['Gluten free',
+const diets = ['gluten free',
             'dairy free',
             'paleolithic',
             'ketogenic',

@@ -10,6 +10,7 @@
   backdrop-filter: blur(30px);
   max-width: 800px;
   font-size: small;
+  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
 }
 
 .img{
@@ -22,7 +23,32 @@
   max-height: 200px;
 }
 
-.nameSummary{
+.primary{
   display: flex;
   flex-direction: row;
+  justify-content: center;
+  
+}
+.name{
+  padding-left: 15px;
+  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+
+.dietpad{
+  padding-left: 20px;
+  padding-right: 20px;
+}
+.summary, .steps{
+  padding: 15px;
+  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+
+.types{
+  display: flex;
+  flex-direction: row;
+}
+
+.points{
+  display: flex;
+  flex-direction: column;
 }

@@ -2,19 +2,21 @@
     border-color: red;
 }
 .container{
-    width: 50%;
+    width: 70%;
     height: 80%;
     padding-left: 20px;
     padding-bottom: 20px;
     border-radius: 16px;
     background-color: #77777766;
     backdrop-filter: blur(16px);
-    margin: 0 25%;
+    margin: 0 15%;
     text-align: center;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
 }
 .divCreate{
     display: flex;
     flex-direction: row;
+    justify-content: center;
 }
 .form{
   display: flex;
@@ -31,18 +33,19 @@ input{
     max-width: 200px;
     margin-bottom: 5px;
     border-radius: 5px;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
 }
 
 textarea{
     max-width: 400px;
     border-radius: 5px;
+    min-width: 200px;
 }
+
 
 .btnCreate{
     margin-top: 15px;
     border-radius: 5px;
     height: 30px;
-
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
 }
-
-
