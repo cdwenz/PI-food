@@ -6,4 +6,5 @@ export const SET_SEARCH = "SET_SEARCH";
 export const GET_DIETS = "GET_DIETS";
 export const ORDER = "ORDER";
 export const ORDER_SCORE = "ORDER_SCORE";
-export const ORDER_DIET ="ORDER_DIET";
+export const ORDER_DIET = "ORDER_DIET";
+export const GET_ERROR = "GET_ERROR";

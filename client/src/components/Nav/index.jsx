@@ -10,7 +10,13 @@ export default function Nav(){
     const dispatch = useDispatch();
 
     async function handleChange(e){
-      dispatch(await setSearch(e.target.value))
+        dispatch(await setSearch(e.target.value))
+    }
+    function pressEnter(e){
+        if(e.charCode === 13){
+            if(search === "") alert('you must enter a recipe');
+            else window.location.href = `/search/${search}`;
+        }
     }
   
     
@@ -28,7 +34,7 @@ export default function Nav(){
                     </ul>
                 </div>
                 <div>
-                    <form >
+                    <div >
                         <input
                         type="text"
                         id="title"
@@ -37,8 +43,9 @@ export default function Nav(){
                         value={search}
                         className={styles.inputSearch}
                         onChange={(e) => handleChange(e)}
+                        onKeyPress={(e) => pressEnter(e)}
                         />
-                    </form>
+                    </div>
                 
                 </div>
                 <NavLink to={`/search/${search}`} style={{color: 'white', textDecoration: 'none', paddingBottom:'5px'}}>Search<FcSearch/></NavLink>

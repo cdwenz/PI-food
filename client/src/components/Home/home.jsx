@@ -1,10 +1,13 @@
-import {useSelector} from "react-redux"
+import { useEffect } from "react";
+import {useDispatch, useSelector} from "react-redux"
+import { setPage } from "../../Dispatch/actions";
 import Cards from "../Cards/Cards";
 
 export default function Home(){
   
+  
   const state = useSelector(state => state.recipes)
- 
+  
   return (
       <>
       {

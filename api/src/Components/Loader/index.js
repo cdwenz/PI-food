@@ -19,6 +19,7 @@ function preload(element) {
         })
       })
     }
+    console.log('Diets loaded')
   }
 
   

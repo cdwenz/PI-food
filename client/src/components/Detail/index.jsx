@@ -7,6 +7,7 @@ import DishTypes from '../DishTypes';
 
 export default function Detail(props){
     const id = props.match.params.id;
+
     const [rec, setRec] = useState('')
     
     useEffect(()=>{
@@ -17,11 +18,17 @@ export default function Detail(props){
         getRecipeById(id);
     },[id])
 
-    console.log(rec);
+    console.log(props)
+    function onClose(){
+        props.history.goBack()
+    }
     return (
         <div className={styles.detail}>
            <div >
+               <div>
                         <h1 className={styles.name}>{rec.name}</h1>
+                        <button onClick={onClose}>X</button>
+               </div>
                <div className={styles.primary}>
                     <div>
                         <span><img className={styles.img} src={rec.image?rec.image:img} alt=""/></span>

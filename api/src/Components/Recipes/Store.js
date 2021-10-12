@@ -20,7 +20,7 @@ async function getRecipes(name){
 
     }else{  //Busqueda de Todas las recetas
         try{
-            recipeAPI = await axios.get(`https://api.spoonacular.com/recipes/complexSearch?apiKey=${API_KEY}&&addRecipeInformation=true&number=100`)
+            recipeAPI = await axios.get(`https://api.spoonacular.com/recipes/complexSearch?apiKey=${API_KEY}&&addRecipeInformation=true&number=10`)
             recipeDB = await Recipe.findAll(
             {
                 attributes: ['id', 'name', 'summary', 'score','image', 'health', 'steps'],

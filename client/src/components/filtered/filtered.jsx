@@ -43,16 +43,16 @@ export function Filtered({value}){
             <option value="75-100">75-100</option>
         </select>
         <select name="selectDiet" onChange={handleDietChange}>
-            <option value="none" id="selectDiet"selected disabled>Select Diet</option>
+            <option value="none" id="selectDiet" defaultValue disabled>Select Diet</option>
             <option value="ALL">ALL</option>
         {
             diets.length > 0
             ?
-                diets.map((e) => {
-                    return <option value={e}>{e}</option>
+                diets.map((e, index) => {
+                    return <option key={index} value={e}>{e}</option>
                 })
             :
-                <h3>diets</h3>
+                null
         }
         </select>
         <button onClick={onClickClear} className={styles.btnFilter}>Clear Filters</button>

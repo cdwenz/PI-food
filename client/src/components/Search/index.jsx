@@ -1,8 +1,8 @@
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { getRecipeQuery, setSearch } from "../../Dispatch/actions";
+import { getRecipeQuery, setPage, setSearch } from "../../Dispatch/actions";
 import Cards from "../Cards/Cards";
-
+import styles from './search.module.css'
 
 export default function Search(props){
     const name = props.match.params.name;
@@ -11,6 +11,7 @@ export default function Search(props){
     
     useEffect(()=>{
         async function get(name){
+          dispatch(await setPage({page:1,value:'recipesByQuery'}))
            dispatch(await getRecipeQuery(name))
            dispatch(await setSearch(""))
         } 
@@ -25,7 +26,8 @@ export default function Search(props){
           ?
             <Cards value='recipesByQuery'/>
           : 
-            <h3>Loading...</h3>}
-          </>
+            <div className={styles.notCont}><div className={styles.notFound}>Recipe not found</div></div>
+        }
+        </>
     )
 }

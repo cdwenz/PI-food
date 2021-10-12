@@ -1,6 +1,6 @@
 
 import axios from "axios"
-import { GET_ALL_RECIPES, GET_DIETS, GET_RECIPE_QUERY, ORDER, ORDER_DIET, ORDER_SCORE, SET_PAGE, SET_SEARCH } from "./Types"
+import { GET_ALL_RECIPES, GET_DIETS, GET_ERROR, GET_RECIPE_QUERY, ORDER, ORDER_DIET, ORDER_SCORE, SET_PAGE, SET_SEARCH } from "./Types"
 
 export function getAllRecipes(){
     return function(dispatch){
@@ -8,6 +8,9 @@ export function getAllRecipes(){
             .then(response => response.json())
             .then(json => {
                 dispatch({type: GET_ALL_RECIPES, payload: json})
+            })
+            .catch(err =>{
+                dispatch({type: GET_ERROR, payload: err})
             })
     }
 }
@@ -28,6 +31,9 @@ export function getDiets(){
             .then(json => {
                 dispatch({type: GET_DIETS, payload: json})
             })
+            .catch(err =>{
+                dispatch({type: GET_ERROR, payload: err})
+            })
     }
 }
 
@@ -42,6 +48,7 @@ export async function postRecipe(list){
     
 }
 export function setPage(payload){
+    console.log('actions',payload)
     return{
         type: SET_PAGE,
         payload}

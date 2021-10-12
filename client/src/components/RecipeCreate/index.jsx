@@ -1,7 +1,6 @@
 import { useState } from "react"
 import { useDispatch, useSelector } from "react-redux";
 import { getAllRecipes, postRecipe } from "../../Dispatch/actions";
-import DietsIcons from "../DietsIcons";
 import styles from './recipeCreate.module.css'
 
 function validate(input){
@@ -62,7 +61,9 @@ export default function RecipeCreate(){
        ? 
        alert('Recipe load fullfiled') 
        : 
-       alert('hubo un error en la carga')
+       alert('hubo un error en la carga');
+       
+       window.location.href = "/home"
    }
    function cleanChecks(){
        diets.forEach((diet)=>{

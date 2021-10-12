@@ -2,17 +2,18 @@ import { useDispatch, useSelector } from "react-redux";
 import { setPage } from "../../Dispatch/actions";
 import styles from "./paginate.module.css"
 
-export function Paginate({arr}){
-    const page = useSelector(state=> state.page);
+export function Paginate({arr, value}){
+    const page = useSelector(state=> state.page[value]);
     const dispatch = useDispatch();
   
     function displayPage(e){
         e.preventDefault();
+
         if(e.target.id === 'prev') {
-            dispatch(setPage(page - 1));
+            dispatch(setPage({page: page - 1, value}));
         }else if(e.target.id === 'next') {
-            dispatch(setPage(page + 1));
-        } else dispatch(setPage(parseInt(e.target.id)))
+            dispatch(setPage({page: page + 1,value}));
+        } else dispatch(setPage({page: parseInt(e.target.id), value}))
     }
 
     return(
@@ -21,8 +22,8 @@ export function Paginate({arr}){
         ?   <button className={styles.prev} id="prev" onClick={(e) => displayPage(e)} disabled> PREV </button> 
         :   <button className={styles.prev} id="prev" onClick={(e) => displayPage(e)}> PREV </button> }
         {
-            arr.map(page => 
-                <button id={page.page}  className={styles.btns} onClick={(e) => displayPage(e)}>
+            arr.map((page,index) => 
+                <button key={index} id={page.page}  className={styles.btns} onClick={(e) => displayPage(e)}>
                     {page.page}
                 </button>
             )

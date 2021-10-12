@@ -16,6 +16,12 @@
     flex-wrap: wrap;
     gap: 30px;
 }
+.divCards h1{
+    background-color: #77777770;
+    backdrop-filter: blur(5px);
+    padding: 50px;
+    border-radius: 15px;
+}
 .link{
     text-decoration: none;
 }
