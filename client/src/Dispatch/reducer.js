@@ -1,7 +1,7 @@
 import { GET_ALL_RECIPES, GET_DIETS, GET_ERROR, GET_RECIPE_QUERY, ORDER, ORDER_DIET, ORDER_SCORE, SET_PAGE, SET_SEARCH } from "./Types"
 
 const initialState = {
-    serverDown: false,
+    serverDown: true,
     originRec: "",
     recipes: "",
     recipesByQuery: "",
@@ -10,7 +10,7 @@ const initialState = {
         recipesByQuery: 1
     },
     search: "",
-    diets: "",
+    diets: ""
 }
 
 export default function rootReducer(state = initialState, {type, payload}){
@@ -24,7 +24,8 @@ export default function rootReducer(state = initialState, {type, payload}){
             return{
                 ...state,
                 originRec: payload,
-                recipes: payload
+                recipes: payload,
+                serverDown: false
             }
         case GET_RECIPE_QUERY:
             return {

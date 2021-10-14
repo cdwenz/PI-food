@@ -6,8 +6,8 @@ export default function DishTypes({arrayDish}){
         {
             Array.isArray(arrayDish)
             ?
-            arrayDish.map(e=>{
-                return <li>{e}</li>
+            arrayDish.map((e, index)=>{
+                return <li key={index}>{e}</li>
             })
             :
             <li>Without Description</li>

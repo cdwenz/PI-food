@@ -6,8 +6,8 @@ const { Recipe, conn } = require('../../src/db.js');
 
 const agent = session(app);
 const recipe = {
-  name: 'Milanea a la napolitana',
-  summary: 'Milanga con salsa y queso'
+  name: 'Milanga a la napolitana',
+  summary: 'Con salsa y queso'
 };
 
 describe('Recipe routes', () => {
@@ -21,5 +21,14 @@ describe('Recipe routes', () => {
     it('should get 200', () =>
       agent.get('/recipes').expect(200)
     );
+  });
+  describe('GET /recipes Milanga', () => {
+    it('should get 200', () =>
+      agent.get('/recipes?name=Milanga').expect(200)
+    );
+  });
+  describe('GET /recipes/WRONG', () => {
+    it('should get 404', () =>
+      agent.get('/recipes?name=WRONG').expect(404));
   });
 });

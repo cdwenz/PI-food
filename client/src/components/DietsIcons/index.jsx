@@ -5,7 +5,7 @@ import {GrStatusGood} from 'react-icons/gr'
 import {SiWattpad, SiFoursquarecityguide, SiPandora, SiPassport} from 'react-icons/si'
 import styles from './DietsIcons.module.css'
 
-export default function DietsIcons({arrayDiets, card, id}){
+export default function DietsIcons({arrayDiets, card}){
     if(card === true){
         return(
             <>
@@ -41,18 +41,18 @@ export default function DietsIcons({arrayDiets, card, id}){
                     ?
                     <>
                     {arrayDiets.map((e,index) => { 
-                        return (<>
-                        {e === 'gluten free' ? <li key={index} className={styles.spanDiet}><GiWheat className={styles.icons}/>{" "+ e}</li>
-                        : e === 'dairy free' ? <li key={index} className={styles.spanDiet}><GiCow className={styles.icons}/>{" "+ e}</li>
-                        : e === 'pescatarian' ? <li key={index} className={styles.spanDiet}><IoFishOutline className={styles.icons}/>{" "+ e}</li>
-                        : e === 'vegan' ? <li key={index} className={styles.spanDiet}><GiMapleLeaf className={styles.icons}/>{" "+ e}</li>
-                        : e === 'lacto ovo vegetarian' ? <li key={index} className={styles.spanDiet}><FaLeaf className={styles.icons}/>{" "+ e}</li>
-                        : e === 'whole 30' ? <li key={index} className={styles.spanDiet}><SiWattpad className={styles.icons}/>{" "+ e}</li>
-                        : e === 'fodmap friendly' ? <li key={index} className={styles.spanDiet}><SiFoursquarecityguide className={styles.icons}/>{" "+ e}</li>
-                        : e === 'paleolithic' ? <li key={index} className={styles.spanDiet}><SiPandora className={styles.icons}/>{" "+ e}</li>
-                        : e === 'primal' ? <li key={index} className={styles.spanDiet}><SiPassport className={styles.icons}/>{" "+ e}</li>
-                        :<li key={index} className={styles.spanDiet}><GrStatusGood className={styles.icons}/>{" "+ e}</li>
-                    }</>)
+                        return (<li key={index}>
+                        {e === 'gluten free' ? <span><GiWheat className={styles.icons}/>{" "+ e}</span>
+                        : e === 'dairy free' ? <span><GiCow className={styles.icons}/>{" "+ e}</span>
+                        : e === 'pescatarian' ? <span><IoFishOutline className={styles.icons}/>{" "+ e}</span>
+                        : e === 'vegan' ? <span><GiMapleLeaf className={styles.icons}/>{" "+ e}</span>
+                        : e === 'lacto ovo vegetarian' ? <span><FaLeaf className={styles.icons}/>{" "+ e}</span>
+                        : e === 'whole 30' ? <span><SiWattpad className={styles.icons}/>{" "+ e}</span>
+                        : e === 'fodmap friendly' ? <span><SiFoursquarecityguide className={styles.icons}/>{" "+ e}</span>
+                        : e === 'paleolithic' ? <span><SiPandora className={styles.icons}/>{" "+ e}</span>
+                        : e === 'primal' ? <span><SiPassport className={styles.icons}/>{" "+ e}</span>
+                        :<span><GrStatusGood className={styles.icons}/>{" "+ e}</span>
+                    }</li>)
                     })}
                     </>
                     :

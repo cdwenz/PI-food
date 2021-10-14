@@ -74,37 +74,38 @@ export default function RecipeCreate(){
    }
     return (
     <div className={styles.container}>
-            <h1>Recipe Create</h1>
+            <h1>Create Recipe </h1>
         <div className={styles.divCreate}>
             <div className={styles.divform}>
                 <form className={styles.form} onChange={(e)=>handleChange(e)} onSubmit={handleSubmit}>
                     <input type="text" name="name" placeholder="Title"
-                        className={errors.name && styles.error} value={list.name}/>
+                        className={errors.name && styles.error} defaultValue={list.name}/>
                     <input type="text" name="summary" placeholder="Summary"
-                        className={errors.summary && styles.error} value={list.summary}/>
-                    <input type="number" name="score" placeholder="Score (0-100)" className={errors.score && styles.error} value={list.score}/>
+                        className={errors.summary && styles.error} defaultValue={list.summary}/>
+                    <input type="number" name="score" placeholder="Score (0-100)" className={errors.score && styles.error} defaultValue={list.score}/>
                     
-                    <input type="number" name="health" placeholder="Health Score (0-100)" className={errors.health && styles.error} value={list.health}/>
+                    <input type="number" name="health" placeholder="Health Score (0-100)" className={errors.health && styles.error} defaultValue={list.health}/>
                     <label>Steps</label>
-                    <textarea rows = "8"  name = "step" placeholder ="Enter Steps here..." value={list.step} />
+                    <textarea rows = "8"  name = "step" placeholder ="Enter Steps here..." defaultValue={list.step} />
                     <button type="submit" className={styles.btnCreate} disabled={errors.name || errors.summary || errors.score || errors.health ? true : false} >Create</button>
                 </form>
                     
             </div>
             <div ><ul className={styles.diets}>
-                <form onChange={(e)=>handleChange(e)}>
-                        {
-                            diets.length > 0
-                        ?
-                        diets.map((e,index) => {
-                                return <div>
-                                    <input type="checkbox" className="checks" id={e} />
-                                    <label htmlFor={e} >{e}</label>
-                                </div> 
-                            })
-                            :
-                            <h3>diets</h3>
-                        }
+                
+                        <form onChange={(e)=>handleChange(e)}>
+                                {
+                                    diets.length > 0
+                                ?
+                                diets.map((e,index) => {
+                                        return <div key={index}>
+                                            <input type="checkbox" className="checks" id={e} />
+                                            <label htmlFor={e} >{e}</label>
+                                        </div> 
+                                    })
+                                    :
+                                    <h3>diets</h3>
+                                }
                         </form>
                     </ul>
             </div>

@@ -10,7 +10,6 @@
   backdrop-filter: blur(30px);
   max-width: 800px;
   font-size: small;
-  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
 }
 
 .img{
@@ -35,7 +34,6 @@
 }
 
 .dietpad{
-  padding-left: 20px;
   padding-right: 20px;
 }
 .summary, .steps{
@@ -51,4 +49,165 @@
 .points{
   display: flex;
   flex-direction: column;
+}
+
+.btnClose{
+  margin-inline-start: auto;
+  align-self: self-start;
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+}
+.iconCLose{
+  width: 30px;
+  height: 30px;
+  transition: 0.2s;
+}
+.iconCLose:hover{
+  width: 35px;
+  height: 35px;
+  color:white
+}
+
+@media (max-width: 1000px) {
+  .detail{
+    position: relative;
+    width: 80vw;
+    /* height: 80vh; */
+    margin: 5vh 5vw;
+    border-radius: 10px;
+    border-style: solid;
+    justify-content: center;
+    background-color: #77777770;
+    backdrop-filter: blur(30px);
+    max-width: 800px;
+    font-size: small;
+  }
+  
+  .img{
+    width: 40vw;
+    height: 50vh;
+    padding: 15px;
+    border-radius: 25px;
+    justify-self: center;
+    max-width: 200px;
+    max-height: 200px;
+  }
+  
+  .primary{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    
+  }
+  .name{
+    padding-left: 15px;
+  }
+  
+  .dietpad{
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+  .summary, .steps{
+    padding: 15px;
+  }
+  
+  .types{
+    display: flex;
+    flex-direction: row;
+  }
+  
+  .points{
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .btnClose{
+    margin-inline-start: auto;
+    align-self: self-start;
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+  }
+  .iconCLose{
+    width: 30px;
+    height: 30px;
+    transition: 0.2s;
+  }
+  .iconCLose:hover{
+    width: 35px;
+    height: 35px;
+    color:white
+  }
+}
+@media (max-width: 600px) {
+  .detail{
+    position: relative;
+    width: 80vw;
+    /* height: 80vh; */
+    margin: 5vh 5vw;
+    border-radius: 10px;
+    border-style: solid;
+    justify-content: center;
+    background-color: #77777770;
+    backdrop-filter: blur(30px);
+    max-width: 800px;
+    font-size: small;
+  }
+  
+  .img{
+    width: 40vw;
+    height: 50vh;
+    padding: 15px;
+    border-radius: 25px;
+    justify-self: center;
+    max-width: 200px;
+    max-height: 200px;
+  }
+  
+  .primary{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    
+  }
+  .name{
+    padding-left: 15px;
+  }
+  
+  .dietpad{
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+  .summary, .steps{
+    padding: 15px;
+  }
+  
+  .types{
+    display: flex;
+    flex-direction: row;
+  }
+  
+  .points{
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .btnClose{
+    margin-inline-start: auto;
+    align-self: self-start;
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+  }
+  .iconCLose{
+    width: 30px;
+    height: 30px;
+    transition: 0.2s;
+  }
+  .iconCLose:hover{
+    width: 30px;
+    height: 30px;
+    color:white
+  }
 }

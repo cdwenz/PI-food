@@ -8,8 +8,8 @@ async function getRecipes(name){
     let recipeAPI, recipeDB;
     if(name){   //Busqueda por Query
         try{
+            console.log('busca en la api' )
             recipeAPI = await axios.get(`https://api.spoonacular.com/recipes/complexSearch?apiKey=${API_KEY}&titleMatch=${name}&&addRecipeInformation=true&number=100`) 
-            console.log(recipeAPI)
             recipeDB = await Recipe.findAll({
                 where: {
                     name: { [Op.iLike]: `%${name}%` }
@@ -41,7 +41,7 @@ async function getRecipes(name){
     
 
     if(recipes.length > 0 || recipeDB.length > 0) return([...recipes, ...recipeDB]);
-    else throw new Error('Recipe is not found')
+    else throw new Error('Recipe not found')
 };
 
 async function getRecipesById(id){

@@ -1,10 +1,11 @@
 body{
-  background-image: url("../src/img/george-zheng-0Kbjfwunink-unsplash.jpg");
+  background-image: url("../src/img/soup-918422.jpg");
   background-repeat: no-repeat;
   background-size: cover;
   background-attachment: fixed;
   box-sizing: border-box;
   font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+  display: flex;
 }
 
 .app{
@@ -13,7 +14,7 @@ body{
   right: 0;
   left: 0;
   height: fit-content;
-  background-image: url("../src/img/george-zheng-0Kbjfwunink-unsplash.jpg");
+  background-image: url("../src/img/soup-918422.jpg");
   background-color: #ffffff56;
   background-size:cover;
   background-attachment: fixed;

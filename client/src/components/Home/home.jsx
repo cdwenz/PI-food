@@ -1,21 +1,28 @@
-import { useEffect } from "react";
-import {useDispatch, useSelector} from "react-redux"
-import { setPage } from "../../Dispatch/actions";
+import {useSelector} from "react-redux"
 import Cards from "../Cards/Cards";
+import styles from "./home.module.css";
+import {MdOutlineDoNotDisturbOnTotalSilence} from "react-icons/md"
 
 export default function Home(){
   
   
-  const state = useSelector(state => state.recipes)
+  const state = useSelector(state => state)
   
   return (
       <>
       {
-        Array.isArray(state) 
+        Array.isArray(state.recipes) 
       ?
         <Cards value='recipes'/>
       : 
-        <h3>Loading...</h3>}
+        <div className={styles.notCont}>
+          <div className={styles.notFound}>
+            <MdOutlineDoNotDisturbOnTotalSilence className={styles.red}/>
+              Server Down
+            <MdOutlineDoNotDisturbOnTotalSilence className={styles.red}/>
+          </div>
+        </div>
+      }
       </>
     )
 }

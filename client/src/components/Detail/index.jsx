@@ -4,6 +4,7 @@ import styles from './detail.module.css'
 import img from '../../img/cociner.png'
 import DietsIcons from '../DietsIcons';
 import DishTypes from '../DishTypes';
+import {IoCloseCircleOutline} from 'react-icons/io5';
 
 export default function Detail(props){
     const id = props.match.params.id;
@@ -18,16 +19,19 @@ export default function Detail(props){
         getRecipeById(id);
     },[id])
 
-    console.log(props)
     function onClose(){
         props.history.goBack()
     }
     return (
         <div className={styles.detail}>
            <div >
-               <div>
+               <div className={styles.types}>
+                   <div>
                         <h1 className={styles.name}>{rec.name}</h1>
-                        <button onClick={onClose}>X</button>
+                   </div>
+                   {/* <div > */}
+                        <button className={styles.btnClose} onClick={onClose}><IoCloseCircleOutline className={styles.iconCLose}/></button>
+                   {/* </div> */}
                </div>
                <div className={styles.primary}>
                     <div>
@@ -69,8 +73,8 @@ export default function Detail(props){
                         {
                         Array.isArray(rec.steps) && rec.steps.length > 0
                         ?
-                            rec.steps.map(e=>{
-                            return<li>{e}</li>
+                            rec.steps.map((e,index)=>{
+                            return<li key={index}>{e}</li>
                             })
                         :
                             <span>Without Description</span>

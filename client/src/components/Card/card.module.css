@@ -15,9 +15,8 @@
     text-decoration: none;
     font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
 }
-.divPrincipal + .divPrincipal{
-    border-left: solid 10px #0000001e;
-    border-top: solid 10px #0000001e;
+.divPrincipal:hover{
+    background-color: #9c9b9b56;
 }
 
 .imgCard{

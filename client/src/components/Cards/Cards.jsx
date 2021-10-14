@@ -1,11 +1,10 @@
-import React, { useEffect } from "react";
+import React from "react";
 import Card from "../Card/Card";
-import { useDispatch, useSelector } from "react-redux";
+import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import styles from './cards.module.css'
 import { Paginate } from "../Paginate";
 import { Filtered } from "../filtered/filtered";
-import { setPage } from "../../Dispatch/actions";
 
 
 export default function Cards({value}){
@@ -26,7 +25,6 @@ export default function Cards({value}){
       }
       arr.push(item);
     }
-    console.log('num pagina ',page);
      
     return(
         <div className={styles.divContain}>
