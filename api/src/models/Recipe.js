@@ -26,10 +26,10 @@ module.exports = (sequelize) => {
       allowNull: false
     },
     score:{
-      type: DataTypes.INTEGER
+      type: DataTypes.INTEGER,
     },
     health:{
-      type: DataTypes.INTEGER
+      type: DataTypes.INTEGER,
     },
     steps: {
       type: DataTypes.JSON

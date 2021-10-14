@@ -44,10 +44,16 @@ export default function Detail(props){
                                 <DietsIcons arrayDiets={rec.diets}/>
                                 
                             </div>
-                            <div>
-                                <h3>Dish Types</h3>
-                                <DishTypes arrayDish={rec.dishTypes} /> 
-                            </div>
+                                {
+                                    rec.dishTypes
+                                    ?
+                                    <div>
+                                        <h3>Dish Types</h3>
+                                        <DishTypes arrayDish={rec.dishTypes} /> 
+                                    </div>
+                                    :
+                                    null
+                                }
                         </div>
                         <div className={styles.types}>
                             <div className={styles.dietpad}>

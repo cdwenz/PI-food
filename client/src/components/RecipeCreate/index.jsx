@@ -20,9 +20,9 @@ export default function RecipeCreate(){
     const object = {
         name: "",
         summary: "",
-        score:"",
-        health: "",
-        step: "",
+        score:null,
+        health: null,
+        steps: "",
         dietName: []
     }
     const [list, setList] = useState(object);
@@ -59,7 +59,7 @@ export default function RecipeCreate(){
        cleanChecks();
        flag === true 
        ? 
-       alert('Recipe load fullfiled') 
+       alert('Recipe successfully created') 
        : 
        alert('hubo un error en la carga');
        
@@ -86,7 +86,7 @@ export default function RecipeCreate(){
                     
                     <input type="number" name="health" placeholder="Health Score (0-100)" className={errors.health && styles.error} defaultValue={list.health}/>
                     <label>Steps</label>
-                    <textarea rows = "8"  name = "step" placeholder ="Enter Steps here..." defaultValue={list.step} />
+                    <textarea rows = "8"  name = "steps" placeholder ="Enter Steps here..." defaultValue={list.steps} />
                     <button type="submit" className={styles.btnCreate} disabled={errors.name || errors.summary || errors.score || errors.health ? true : false} >Create</button>
                 </form>
                     

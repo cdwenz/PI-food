@@ -2,13 +2,6 @@
 import axios from "axios"
 import { GET_ALL_RECIPES, GET_DIETS, GET_ERROR, GET_RECIPE_QUERY, ORDER, ORDER_DIET, ORDER_SCORE, SET_PAGE, SET_SEARCH } from "./Types"
 
-// export function getAllRecipes(){
-//     return async function(dispatch){
-//        let response = await (await axios.get(`http://localhost:3001/recipes`)).data;
-//                return dispatch({type: GET_ALL_RECIPES, payload: response})
-//     }
-// }
-    
 
 export function getAllRecipes(){
     return function(dispatch){
@@ -36,23 +29,9 @@ export function getRecipeQuery(name){
     }
 }
 
-// export function getDiets(){
-//     return function(dispatch){
-//         return fetch(`http://localhost:3001/types`)
-//             .then(response => response.json())
-//             .then(json => {
-//                 dispatch({type: GET_DIETS, payload: json})
-//             })
-//             .catch(err =>{
-//                 dispatch({type: GET_ERROR, payload: err})
-//             })
-//     }
-// }
-
 export function getDiets(){
     return async function(dispatch){
         let json = await(await axios.get(`http://localhost:3001/types`)).data;
-        console.log(json)
         return dispatch({type: GET_DIETS, payload: json})
     }
 }

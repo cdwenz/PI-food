@@ -1,24 +1,21 @@
 const router = require('express').Router();
-const {Op, where} = require('sequelize');
-const axios = require('axios');
-const {conn, Recipe, Diet} = require ('../../db');
-const {API_KEY} = process.env;
-const {normalizeRecipe} = require('./Controller');
-const {getRecipes, getRecipesById} = require('./Store')
+const Controller = require('./Controller');
+const {Recipe, Diet} = require ('../../db');
 
 router.get('/', async(req, res) => {
     let response;
     
 if(req.query.name){
     try{
-        response =  await getRecipes(req.query.name);
+        response =  await Controller.getRecipes(req.query.name);
         res.status(200).json(response)
     }catch({message: error}){
         res.status(404).json(error);
     }
 }else {
     try{
-        response = await getRecipes();
+        
+        response = await Controller.getRecipes();
         res.status(200).json(response)
     }catch({message: error}){
         console.log(error)
@@ -29,9 +26,8 @@ if(req.query.name){
 
 router.get('/:id', async(req,res) => {
     let {id} = req.params;
-    
     try{
-       let response = await getRecipesById(id); 
+       let response = await Controller.getRecipesById(id); 
        res.json(response)
     }catch({message: error}){
         res.status(500).send(error)
@@ -39,29 +35,26 @@ router.get('/:id', async(req,res) => {
 })
 
 router.post('/', async(req,res) => {
-    const {name, summary, score, health, steps, dietName, image} = req.body;
-    console.log(dietName)
-    if(!name || !summary) return res.status(404).send('Name and Summary are required')
+    if(!req.body.name || !req.body.summary) return res.status(404).send('Name and Summary are required')
     try{
-        const recipe = await Recipe.create({
-            name,
-            summary,
-            score,
-            health,
-            steps,
-        })
-       
-        if(dietName){//['gluten free, vegan]
-            let arrayDiet = await Diet.findAll({    //[{object de gluten free}, {object vegan}]
-                where: {name: dietName} 
-            })
-           recipe.addDiet(arrayDiet)
-
-        }
+        let recipe = await Controller.postRecipe(req.body)
         res.json(recipe);
     }catch(err){
         res.status(404).send(err);
     }
+})
+
+router.delete('/:id', async (req, res)=>{
+    if(req.params.id.length !== 36) return res.status(404).json('Invalid ID');
+    try{
+        let response = await Recipe.destroy({where: {
+                id: req.params.id
+            }})
+        res.json(response)
+    }catch(err){
+        res.status(404).json('no se borro')
+    }
+  
 })
 
 module.exports = router;

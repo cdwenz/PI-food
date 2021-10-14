@@ -1,55 +1,56 @@
+const { normalizeRecipeDBbyID, normalizeRecipeAPI, normalizeRecipeDB } = require("./functions");
+const store = require("./Store");
 
-function normalizeRecipeDB(array){
-    let aux = [];
-    array.map( (e) =>{
-    let dietDB = e.dataValues.diets.map(el => el.name)
-    let obj = {
-        ...e.dataValues,
-        diets: dietDB
-    }
-    aux.push(obj)
-    })
-    return aux;
-}
-function normalizeRecipeDBbyID(object){
-    // console.log('ACA',object)
-    
-    let dietDB = object.dataValues.diets.map(el => el.dataValues.name)
-    console.log('dietDB', dietDB)
-    let obj = {
-        ...object.dataValues,
-        diets: dietDB
-    }
-    
-  
-    return obj;
+
+async function getRecipes(name){
+    try{
+        
+        let recipes = await store.getRecipes(name)
+        let recipeAPI = [];
+        let recipeDB;
+        recipes[0].data.results.forEach(element => {
+            const obj = normalizeRecipeAPI(element)
+            recipeAPI.push(obj);
+        });
+        
+        recipeDB = normalizeRecipeDB(recipes[1])
+        
+        if(recipeAPI.length > 0 || recipeDB.length > 0) return([...recipeAPI, ...recipeDB]);
+        else throw new Error('Recipe not found')
+        
+    }catch(err){
+        throw new Error(err.message)
+    } 
 }
 
-function plain(word){
-    return word.replace(/[.!,()?]/g, "")
+async function getRecipesById(id){
+    try{
+        let recipeById = await store.getRecipesById(id)
+        if(!recipeById) throw new Error('Recipe not found');
+        if(id.length === 36) {
+            recipeById = normalizeRecipeDBbyID(recipeById);
+        }
+        else{
+            recipeById = normalizeRecipeAPI(recipeById);
+            let stepToStep = [];
+            recipeById.steps?.steps.forEach(e=>{
+                stepToStep.push(e.step)
+            })
+            recipeById.steps = stepToStep
+        }
+        return recipeById
+    }catch(err){
+        throw new Error(err.message)
+    }
 }
 
-function normalizeRecipeAPI(element){
-   
-    const obj = {
-        vegetarian: element.vegetarian,
-        vegan: element.vegan,
-        glutenFree: element.glutenFree,
-        score: element.spoonacularScore,
-        health: element.healthScore,
-        id: element.id,
-        name: element.title,
-        image: element.image,
-        summary: element.summary,
-        dishTypes: element.dishTypes,
-        diets: element.diets,
-        steps: element.analyzedInstructions?element.analyzedInstructions[0]:null
-    }
-    return obj;
+async function postRecipe(body){
+    let response = await store.postRecipe(body);
+    return response
 }
 
 module.exports = {
-    normalizeRecipeAPI,
-    normalizeRecipeDB,
-    normalizeRecipeDBbyID
+    getRecipes,
+    postRecipe,
+    getRecipesById
 }

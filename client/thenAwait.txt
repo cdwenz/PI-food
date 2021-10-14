@@ -1,0 +1,38 @@
+export function getAllRecipes(){
+    return async function(dispatch){
+       let response = await (await axios.get(`http://localhost:3001/recipes`)).data;
+             return dispatch({type: GET_ALL_RECIPES, payload: response})
+    }
+}
+
+export function getAllRecipes(){
+    return function(dispatch){
+        return fetch(`http://localhost:3001/recipes`)
+            .then(response => response.json())
+            .then(json => {
+                dispatch({type: GET_ALL_RECIPES, payload: json})
+            })
+            .catch(err =>{
+                dispatch({type: GET_ERROR, payload: err})
+            })
+    }
+}
+
+
+////////////////////////////////////////////////////////////////////////////////////////
+
+export function getDiets(){
+    return function(dispatch){
+        return axios.get(`http://localhost:3001/types`)
+                .then(res => res.data)
+                .then(data => {
+                    dispatch({type: GET_DIETS, payload: data})
+                })
+    }
+}
+export function getDiets(){
+    return async function(dispatch){
+        let json = await(await axios.get(`http://localhost:3001/types`)).data;
+        return dispatch({type: GET_DIETS, payload: json})
+    }
+}

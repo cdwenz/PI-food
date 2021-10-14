@@ -1,3 +1,4 @@
+import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux"
 import { order, orderByDiet, orderScore } from "../../Dispatch/actions";
 import styles from './filtered.module.css'
@@ -5,6 +6,12 @@ import styles from './filtered.module.css'
 export function Filtered({value}){
     const dispatch = useDispatch();
     const diets = useSelector(state => state.diets)
+
+    useEffect(()=>{
+        document.getElementById('selectName').selected = true
+            document.getElementById('selectScore').selected = true
+            document.getElementById('selectDiet').selected = true
+    },[])
 
     async function onClickClear(){
         dispatch(await orderScore({target: 'ALL', value}))
@@ -24,7 +31,7 @@ export function Filtered({value}){
  
      async function handleDietChange(e){
          dispatch(await orderByDiet({target: e.target.value, value}))
-         document.getElementById('selectScore').selected = true
+        
      }
 
      return (

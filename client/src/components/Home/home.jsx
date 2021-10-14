@@ -18,7 +18,7 @@ export default function Home(){
         <div className={styles.notCont}>
           <div className={styles.notFound}>
             <MdOutlineDoNotDisturbOnTotalSilence className={styles.red}/>
-              Server Down
+              Waiting for server
             <MdOutlineDoNotDisturbOnTotalSilence className={styles.red}/>
           </div>
         </div>

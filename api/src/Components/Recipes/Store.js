@@ -1,14 +1,13 @@
-const {API_KEY} = process.env;
+require('dotenv').config();
+const {API_KEY, API_KEY2, API_KEY3, API_KEY4} = process.env;
 const {Op} = require('sequelize');
 const {Recipe, Diet} = require ('../../db');
-const {normalizeRecipeAPI, normalizeRecipeDB, normalizeRecipeDBbyID} = require('./Controller');
 const axios = require('axios');
 
 async function getRecipes(name){
     let recipeAPI, recipeDB;
     if(name){   //Busqueda por Query
         try{
-            console.log('busca en la api' )
             recipeAPI = await axios.get(`https://api.spoonacular.com/recipes/complexSearch?apiKey=${API_KEY}&titleMatch=${name}&&addRecipeInformation=true&number=100`) 
             recipeDB = await Recipe.findAll({
                 where: {
@@ -20,7 +19,7 @@ async function getRecipes(name){
 
     }else{  //Busqueda de Todas las recetas
         try{
-            recipeAPI = await axios.get(`https://api.spoonacular.com/recipes/complexSearch?apiKey=${API_KEY}&&addRecipeInformation=true&number=10`)
+            recipeAPI = await axios.get(`https://api.spoonacular.com/recipes/complexSearch?apiKey=${API_KEY2}&&addRecipeInformation=true&number=10`)
             recipeDB = await Recipe.findAll(
             {
                 attributes: ['id', 'name', 'summary', 'score','image', 'health', 'steps'],
@@ -28,20 +27,10 @@ async function getRecipes(name){
             }
         )
 
-        }catch(e){throw new Error('No se encontraron recetas')}
+        }catch(e){throw new Error(e)}
     }
-    //Normalizacion de la respuesta
-    let recipes = [];
-    recipeAPI.data.results.forEach(element => {
-        const obj = normalizeRecipeAPI(element)
-        recipes.push(obj);
-    });
 
-    recipeDB = normalizeRecipeDB(recipeDB)
-    
-
-    if(recipes.length > 0 || recipeDB.length > 0) return([...recipes, ...recipeDB]);
-    else throw new Error('Recipe not found')
+    return [recipeAPI,recipeDB]
 };
 
 async function getRecipesById(id){
@@ -52,28 +41,47 @@ async function getRecipesById(id){
                 where:{ id: { [Op.eq]: id } },
                 include: { model: Diet}
             })
-            // console.log('antes del normalize', recipeById)
-            recipeById = normalizeRecipeDBbyID(recipeById)
             console.log(recipeById)
             return recipeById;
         }else{//Busqueda por id
             id = Number(id)
             recipeById = await axios.get(`https://api.spoonacular.com/recipes/${id}/information?apiKey=${API_KEY}`);
             recipeById = recipeById.data;
-            var recipe = normalizeRecipeAPI(recipeById);
-            let stepToStep = [];
-            recipe.steps?.steps.forEach(e=>{
-                // let objeto = {number: e.number, step: e.step}
-                stepToStep.push(e.step)
-            })
-            recipe.steps = stepToStep
-            return recipe;
+            return recipeById;
         }
     }catch(e){
         throw new Error('Recipe id is not found')
     }
 }
+
+async function postRecipe({name, summary, score , health, steps, dietName, image}){
+    if(!score) score = 1;
+    if(!health) health = 1;
+    if(typeof steps === 'string') steps = [steps];
+    try{
+        const recipe = await Recipe.create({
+            name,
+            summary,
+            score,
+            health,
+            steps,
+        })
+       
+        if(dietName){//['gluten free, vegan]
+            let arrayDiet = await Diet.findAll({    //[{object de gluten free}, {object vegan}]
+                where: {name: dietName} 
+            })
+           recipe.addDiet(arrayDiet)
+
+        }
+        return recipe;
+    }catch(err){
+        throw new Error(err.message)
+    }
+}
+
 module.exports = {
     getRecipes,
+    postRecipe,
     getRecipesById
 }
