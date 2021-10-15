@@ -13,7 +13,7 @@ export default function Detail(props){
     
     useEffect(()=>{
         async function getRecipeById(id){
-            const response = await axios.get(`http://localhost:3001/recipes/${id}`)
+            const response = await axios.get(`/recipes/${id}`)
             setRec(response.data)
         } 
         getRecipeById(id);

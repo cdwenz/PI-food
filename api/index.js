@@ -14,7 +14,7 @@ const serverUp = async () => {
   await conn.sync({ force: false })
     console.log('DB connected')
   await Diet.findAll().then(e => preload(e))
-  await  server.listen(3001, () => {
+  await  server.listen(process.env.PORT, () => {
     console.log('listening at 3001'); 
   });
 }

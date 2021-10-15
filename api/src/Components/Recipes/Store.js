@@ -8,7 +8,7 @@ async function getRecipes(name){
     let recipeAPI, recipeDB;
     if(name){   //Busqueda por Query
         try{
-            recipeAPI = await axios.get(`https://api.spoonacular.com/recipes/complexSearch?apiKey=${API_KEY}&titleMatch=${name}&&addRecipeInformation=true&number=100`) 
+            recipeAPI = await axios.get(`https://api.spoonacular.com/recipes/complexSearch?apiKey=${API_KEY4}&titleMatch=${name}&&addRecipeInformation=true&number=100`) 
             recipeDB = await Recipe.findAll({
                 where: {
                     name: { [Op.iLike]: `%${name}%` }
@@ -19,7 +19,7 @@ async function getRecipes(name){
 
     }else{  //Busqueda de Todas las recetas
         try{
-            recipeAPI = await axios.get(`https://api.spoonacular.com/recipes/complexSearch?apiKey=${API_KEY2}&&addRecipeInformation=true&number=10`)
+            recipeAPI = await axios.get(`https://api.spoonacular.com/recipes/complexSearch?apiKey=${API_KEY}&&addRecipeInformation=true&number=100`)
             recipeDB = await Recipe.findAll(
             {
                 attributes: ['id', 'name', 'summary', 'score','image', 'health', 'steps'],
@@ -45,7 +45,7 @@ async function getRecipesById(id){
             return recipeById;
         }else{//Busqueda por id
             id = Number(id)
-            recipeById = await axios.get(`https://api.spoonacular.com/recipes/${id}/information?apiKey=${API_KEY}`);
+            recipeById = await axios.get(`https://api.spoonacular.com/recipes/${id}/information?apiKey=${API_KEY4}`);
             recipeById = recipeById.data;
             return recipeById;
         }

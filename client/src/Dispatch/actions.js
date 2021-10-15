@@ -5,8 +5,8 @@ import { GET_ALL_RECIPES, GET_DIETS, GET_ERROR, GET_RECIPE_QUERY, ORDER, ORDER_D
 
 export function getAllRecipes(){
     return function(dispatch){
-        return fetch(`http://localhost:3001/recipes`)
-            .then(response => response.json())
+        return axios.get(`/recipes`)
+            .then(response => response.data)
             .then(json => {
                 dispatch({type: GET_ALL_RECIPES, payload: json})
             })
@@ -18,8 +18,8 @@ export function getAllRecipes(){
 
 export function getRecipeQuery(name){
     return function(dispatch){
-        return fetch(`http://localhost:3001/recipes?name=${name}`)
-            .then(response => response.json())
+        return axios.get(`/recipes?name=${name}`)
+            .then(response => response.data)
             .then(json => {
                 dispatch({type: GET_RECIPE_QUERY, payload: json})
             })
@@ -31,14 +31,14 @@ export function getRecipeQuery(name){
 
 export function getDiets(){
     return async function(dispatch){
-        let json = await(await axios.get(`http://localhost:3001/types`)).data;
+        let json = await(await axios.get(`/types`)).data;
         return dispatch({type: GET_DIETS, payload: json})
     }
 }
 
 export async function postRecipe(list){
    try{
-        await axios.post(`http://localhost:3001/recipes`, list);
+        await axios.post(`/recipes`, list);
         return true;
    }catch({message: error}){
         return false;
