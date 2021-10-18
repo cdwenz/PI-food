@@ -20,4 +20,4 @@ Diet.findAll().then(e => preload(e))
 //   });
 // }
 
-serverUp();
+// serverUp();
