@@ -5,7 +5,7 @@ const {preload} = require('./src/Components/Loader')
 // Syncing all the models at once.
 conn.sync({ force: false }).then(() => {
   server.listen(process.env.PORT, () => {
-    console.log('listening at ' + PORT); // eslint-disable-line no-console
+    console.log('listening at ' + process.env.PORT); // eslint-disable-line no-console
   });
 });
 Diet.findAll().then(e => preload(e))
