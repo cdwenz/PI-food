@@ -8,10 +8,11 @@ async function getRecipes(name){
         let recipes = await store.getRecipes(name)
         let recipeAPI = [];
         let recipeDB;
-        // recipes[0].data.results.forEach(element => {
-        //     const obj = normalizeRecipeAPI(element)
-        //     recipeAPI.push(obj);
-        // });
+        console.log(recipes)
+        recipes[0].results.forEach(element => {
+            const obj = normalizeRecipeAPI(element)
+            recipeAPI.push(obj);
+        });
         
         recipeDB = normalizeRecipeDB(recipes[1])
         

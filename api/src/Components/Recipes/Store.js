@@ -3,6 +3,7 @@ const { API_KEY, API_KEY2, API_KEY3, API_KEY4 } = process.env;
 const { Op } = require("sequelize");
 const { Recipe, Diet } = require("../../db");
 // const axios = require("axios");
+const fetch = require('cross-fetch');
 
 async function getRecipes(name) {
   let recipeAPI = [];
@@ -10,9 +11,10 @@ async function getRecipes(name) {
   if (name) {
     //Busqueda por Query
     try {
-      // recipeAPI = await axios.get(
-      //   `https://api.spoonacular.com/recipes/complexSearch?apiKey=a60c49d5ae7b4e43a123148df7061e8b&titleMatch=${name}&&addRecipeInformation=true&number=100`
-      // );
+      recipeAPI = await fetch(
+        `https://api.spoonacular.com/recipes/complexSearch?apiKey=a60c49d5ae7b4e43a123148df7061e8b&titleMatch=${name}&&addRecipeInformation=true&number=100`
+      );
+      recipeAPI = await recipeAPI.json();
       recipeDB = await Recipe.findAll({
         where: {
           name: { [Op.iLike]: `%${name}%` },
@@ -25,9 +27,10 @@ async function getRecipes(name) {
   } else {
     //Busqueda de Todas las recetas
     try {
-      // recipeAPI = await axios.get(
-      //   `https://api.spoonacular.com/recipes/complexSearch?apiKey=a60c49d5ae7b4e43a123148df7061e8b&&addRecipeInformation=true&number=100`
-      // );
+      recipeAPI = await fetch(
+        `https://api.spoonacular.com/recipes/complexSearch?apiKey=a60c49d5ae7b4e43a123148df7061e8b&&addRecipeInformation=true&number=100`
+      );
+      recipeAPI = await recipeAPI.json();
       recipeDB = await Recipe.findAll({
         attributes: [
           "id",
@@ -62,10 +65,10 @@ async function getRecipesById(id) {
     } else {
       //Busqueda por id
       id = Number(id);
-      // recipeById = await axios.get(
-      //   `https://api.spoonacular.com/recipes/${id}/information?apiKey=a60c49d5ae7b4e43a123148df7061e8b`
-      // );
-      // recipeById = recipeById.data;
+      recipeById = await fetch(
+        `https://api.spoonacular.com/recipes/${id}/information?apiKey=a60c49d5ae7b4e43a123148df7061e8b`
+      );
+      recipeById = recipeById.json();
       return recipeById;
     }
   } catch (e) {
