@@ -1,6 +1,6 @@
 const server = require('./src/app.js');
 const { conn, Diet } = require('./src/db.js');
-const {preload} = require('./src/Components/Loader')
+// const {preload} = require('./src/Components/Loader')
 
 // Syncing all the models at once.
 conn.sync({ force: false }).then(() => {
@@ -9,11 +9,12 @@ conn.sync({ force: false }).then(() => {
   });
 });
 
-async function serverUp(){
-  let diets = await Diet.findAll();
-  preload(diets)
-}
+// async function serverUp(){
+//   let diets = await Diet.findAll();
+//   preload(diets)
+// }
 
+// serverUp();
 
 //loader DIETS
 // const serverUp = async () => {
@@ -24,5 +25,3 @@ async function serverUp(){
 //     console.log('listening at 3001'); 
 //   });
 // }
-
-serverUp();
