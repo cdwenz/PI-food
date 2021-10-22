@@ -1,4 +1,4 @@
-import styles from './bottom.module.css'
+import styles from './footer.module.css'
 import {AiFillGithub, AiFillLinkedin} from 'react-icons/ai'
 import { NavLink } from 'react-router-dom'
 export default function Bottom(){
@@ -6,7 +6,7 @@ export default function Bottom(){
 return (
  <div className={styles.bottomPrimary}>
    <div className={styles.social}>
-  <a href="https://www.linkedin.com/in/cristian-wenz-ba4a4871/" 
+  <a href="https://www.linkedin.com/in/cristian-wenz-dev/" 
     target="_blank" rel="noreferrer">
       <AiFillLinkedin className={styles.iconBottom}/> 
   </a>

@@ -2,7 +2,7 @@ import React, {useEffect} from 'react';
 import { Route } from 'react-router';
 import Nav from './components/Nav';
 import Home from './components/Home/home';
-import Bottom from './components/Bottom/Bottom'
+import Footer from './components/Footer/Footer'
 import Search from './components/Search';
 import Detail from './components/Detail';
 import Landing from './components/Landing/landing';
@@ -28,7 +28,7 @@ function App() {
       <Route exact path="/search" component={Search}/>
       <Route exact path="/search/:name" component={Search}/>
       <Route exact path="/recipeCreate" component={RecipeCreate}/>
-      <Route path="/:algo" component={Bottom}/>
+      <Route path="/:algo" component={Footer}/>
    
     </div>
   );
