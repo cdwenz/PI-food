@@ -8,7 +8,12 @@ conn.sync({ force: false }).then(() => {
     console.log('listening at ' + process.env.PORT); // eslint-disable-line no-console
   });
 });
-Diet.findAll().then(e => preload(e))
+
+async function serverUp(){
+  let diets = await Diet.findAll();
+  preload(diets)
+}
+
 
 //loader DIETS
 // const serverUp = async () => {
@@ -20,4 +25,4 @@ Diet.findAll().then(e => preload(e))
 //   });
 // }
 
-// serverUp();
+serverUp();
