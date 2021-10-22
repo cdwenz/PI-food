@@ -12,7 +12,7 @@ async function getRecipes(name) {
     //Busqueda por Query
     try {
       recipeAPI = await fetch(
-        `https://api.spoonacular.com/recipes/complexSearch?apiKey=a60c49d5ae7b4e43a123148df7061e8b&titleMatch=${name}&&addRecipeInformation=true&number=100`
+        `https://api.spoonacular.com/recipes/complexSearch?apiKey=${API_KEY2}&titleMatch=${name}&&addRecipeInformation=true&number=100`
       );
       recipeAPI = await recipeAPI.json();
       recipeDB = await Recipe.findAll({
@@ -28,7 +28,7 @@ async function getRecipes(name) {
     //Busqueda de Todas las recetas
     try {
       recipeAPI = await fetch(
-        `https://api.spoonacular.com/recipes/complexSearch?apiKey=a60c49d5ae7b4e43a123148df7061e8b&&addRecipeInformation=true&number=100`
+        `https://api.spoonacular.com/recipes/complexSearch?apiKey=${API_KEY3}&&addRecipeInformation=true&number=100`
       );
       recipeAPI = await recipeAPI.json();
       recipeDB = await Recipe.findAll({
@@ -66,7 +66,7 @@ async function getRecipesById(id) {
       //Busqueda por id
       id = Number(id);
       recipeById = await fetch(
-        `https://api.spoonacular.com/recipes/${id}/information?apiKey=a60c49d5ae7b4e43a123148df7061e8b`
+        `https://api.spoonacular.com/recipes/${id}/information?apiKey=${API_KEY4}`
       );
       recipeById = recipeById.json();
       return recipeById;
