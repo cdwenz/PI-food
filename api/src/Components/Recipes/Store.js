@@ -5,7 +5,8 @@ const { Recipe, Diet } = require("../../db");
 // const axios = require("axios");
 
 async function getRecipes(name) {
-  let recipeAPI, recipeDB;
+  let recipeAPI = [];
+  let recipeDB = [];
   if (name) {
     //Busqueda por Query
     try {
@@ -44,8 +45,7 @@ async function getRecipes(name) {
     }
   }
 
-  // return [recipeAPI, recipeDB];
-  return [recipeDB];
+  return [recipeAPI, recipeDB];
 }
 
 async function getRecipesById(id) {
