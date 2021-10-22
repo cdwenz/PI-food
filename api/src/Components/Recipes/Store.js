@@ -2,7 +2,7 @@ if(process.env.NODE_ENV !== "production") require('dotenv').config();
 const { API_KEY, API_KEY2, API_KEY3, API_KEY4 } = process.env;
 const { Op } = require("sequelize");
 const { Recipe, Diet } = require("../../db");
-const axios = require("axios");
+// const axios = require("axios");
 
 async function getRecipes(name) {
   let recipeAPI, recipeDB;
