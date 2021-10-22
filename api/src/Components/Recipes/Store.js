@@ -9,9 +9,9 @@ async function getRecipes(name) {
   if (name) {
     //Busqueda por Query
     try {
-      recipeAPI = await axios.get(
-        `https://api.spoonacular.com/recipes/complexSearch?apiKey=a60c49d5ae7b4e43a123148df7061e8b&titleMatch=${name}&&addRecipeInformation=true&number=100`
-      );
+      // recipeAPI = await axios.get(
+      //   `https://api.spoonacular.com/recipes/complexSearch?apiKey=a60c49d5ae7b4e43a123148df7061e8b&titleMatch=${name}&&addRecipeInformation=true&number=100`
+      // );
       recipeDB = await Recipe.findAll({
         where: {
           name: { [Op.iLike]: `%${name}%` },
@@ -24,9 +24,9 @@ async function getRecipes(name) {
   } else {
     //Busqueda de Todas las recetas
     try {
-      recipeAPI = await axios.get(
-        `https://api.spoonacular.com/recipes/complexSearch?apiKey=a60c49d5ae7b4e43a123148df7061e8b&&addRecipeInformation=true&number=100`
-      );
+      // recipeAPI = await axios.get(
+      //   `https://api.spoonacular.com/recipes/complexSearch?apiKey=a60c49d5ae7b4e43a123148df7061e8b&&addRecipeInformation=true&number=100`
+      // );
       recipeDB = await Recipe.findAll({
         attributes: [
           "id",
@@ -44,7 +44,8 @@ async function getRecipes(name) {
     }
   }
 
-  return [recipeAPI, recipeDB];
+  // return [recipeAPI, recipeDB];
+  return [recipeDB];
 }
 
 async function getRecipesById(id) {
@@ -61,10 +62,10 @@ async function getRecipesById(id) {
     } else {
       //Busqueda por id
       id = Number(id);
-      recipeById = await axios.get(
-        `https://api.spoonacular.com/recipes/${id}/information?apiKey=a60c49d5ae7b4e43a123148df7061e8b`
-      );
-      recipeById = recipeById.data;
+      // recipeById = await axios.get(
+      //   `https://api.spoonacular.com/recipes/${id}/information?apiKey=a60c49d5ae7b4e43a123148df7061e8b`
+      // );
+      // recipeById = recipeById.data;
       return recipeById;
     }
   } catch (e) {
