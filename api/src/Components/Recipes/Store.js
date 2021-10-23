@@ -12,7 +12,7 @@ async function getRecipes(name) {
     //Busqueda por Query
     try {
       recipeAPI = await fetch(
-        `https://api.spoonacular.com/recipes/complexSearch?apiKey=${API_KEY2}&titleMatch=${name}&&addRecipeInformation=true&number=100`
+        `https://api.spoonacular.com/recipes/complexSearch?apiKey=${API_KEY2}&titleMatch=${name}&&addRecipeInformation=true&number=15`
       );
       recipeAPI = await recipeAPI.json();
       recipeDB = await Recipe.findAll({
@@ -28,7 +28,7 @@ async function getRecipes(name) {
     //Busqueda de Todas las recetas
     try {
       recipeAPI = await fetch(
-        `https://api.spoonacular.com/recipes/complexSearch?apiKey=${API_KEY3}&&addRecipeInformation=true&number=100`
+        `https://api.spoonacular.com/recipes/complexSearch?apiKey=${API_KEY}&&addRecipeInformation=true&number=15`
       );
       recipeAPI = await recipeAPI.json();
       recipeDB = await Recipe.findAll({
