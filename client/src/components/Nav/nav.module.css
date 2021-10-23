@@ -1,11 +1,12 @@
 .navbar {
-    height: 56px;
+    height: auto;
     width: 100%;
     top: 0;
     left: 0;
     background-color:#77777770;
     backdrop-filter: blur(10px);
     display: flex;
+    flex-wrap: wrap;
     justify-content: space-between;
     align-items: center;
     padding: 0 20px;
@@ -19,6 +20,7 @@
     font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
     padding-top: 5px;
     border: none;
+    margin-right: 5px;
 }
 .container{
     position: absolute;
@@ -75,4 +77,9 @@
 :active.navlink{
     text-decoration: none;
     color:red
+}
+
+.searchMobile{
+    display: flex;
+    margin-inline: auto;
 }

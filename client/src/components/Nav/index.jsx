@@ -33,7 +33,7 @@ export default function Nav(){
                         </li>
                     </ul>
                 </div>
-                <div>
+                <div className={styles.searchMobile}>
                     <div >
                         <input
                         type="text"
@@ -47,8 +47,8 @@ export default function Nav(){
                         />
                     </div>
                 
-                </div>
                 <NavLink to={`/search/${search}`} style={{color: 'white', textDecoration: 'none', paddingBottom:'5px'}}>Search<FcSearch/></NavLink>
+                </div>
             
         </header>
     )

@@ -1,6 +1,7 @@
 .notCont{
     margin-top: 25px;
     text-align: -webkit-center;
+    min-height: 380px;
 }
 .notFound{
     display: flex;
@@ -15,4 +16,10 @@
     border-radius: 15px;
     font-size: 20px;
     font-weight: 500;
+}
+
+@media(max-width:500px){
+    .notCont{
+       min-height: 260px;
+    }
 }
