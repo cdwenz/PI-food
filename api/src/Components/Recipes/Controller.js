@@ -9,7 +9,7 @@ async function getRecipes(name){
         let recipeAPI = [];
         let recipeDB;
         console.log(recipes)
-        recipes[0].results.forEach(element => {
+        recipes[0].results?.forEach(element => {
             const obj = normalizeRecipeAPI(element)
             recipeAPI.push(obj);
         });
