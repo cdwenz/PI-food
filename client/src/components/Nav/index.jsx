@@ -4,6 +4,7 @@ import img from "../../img/cookdarkgreen.svg"
 import { useDispatch, useSelector } from "react-redux";
 import { setSearch } from "../../Dispatch/actions";
 import {FcSearch} from "react-icons/fc"
+import { FaErlang } from "react-icons/fa";
 
 export default function Nav(){
     const search = useSelector(state => state.search)
@@ -21,9 +22,12 @@ export default function Nav(){
   
     
     return(
-        <header className={styles.navbar} id="Nav">
+        <div className={styles.navbar} id="Nav">
             
-                    <div><img className={styles.img} src={img} alt="" /></div>
+                    <div className={styles.logo}>
+                        {/* <img className={styles.img} src={img} alt="" /> */}
+                        <FaErlang /> <br/> <span>- COOK</span>
+                    </div>
             
                 <div className={styles.div}>
                     <ul className={styles.list}>
@@ -50,6 +54,6 @@ export default function Nav(){
                 <NavLink to={`/search/${search}`} style={{color: 'white', textDecoration: 'none', paddingBottom:'5px'}}>Search<FcSearch/></NavLink>
                 </div>
             
-        </header>
+        </div>
     )
 }

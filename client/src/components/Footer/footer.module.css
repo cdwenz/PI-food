@@ -1,11 +1,14 @@
 .bottomPrimary {
-  height: 100px;
+  /* position: absolute; */
+  bottom: 0;
   margin-top: 10px;
+  width: 100%;
+  height: 100px;
   justify-content: center;
   background-color: #77777770;
   backdrop-filter: blur(30px);
   text-align: -webkit-center;
-  bottom: 0px;
+  
 }
 .social {
   padding: 10px;

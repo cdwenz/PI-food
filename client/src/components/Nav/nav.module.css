@@ -3,7 +3,7 @@
     width: 100%;
     top: 0;
     left: 0;
-    background-color:#77777770;
+    background-color:#302e2e7d;
     backdrop-filter: blur(10px);
     display: flex;
     flex-wrap: wrap;
@@ -34,8 +34,23 @@
 .div{
     display: flex;
     flex: auto;
+    justify-content: center;
 }
 
+.logo{
+    display: flex;
+    align-items: center;
+    color: aliceblue;
+}
+.logo svg{
+    color: rgb(81, 163, 88);
+    transform: rotate(-15deg);
+    font-size: x-large;
+}
+.logo span{
+    margin-left: 10px;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
 .img{
     width: 3.5em;
     height: 3.5em;
@@ -60,7 +75,7 @@
 }
 
 .item a {
-    color: black;
+    color: aliceblue;
     height: 100%;
     padding: 16px 10px;
     border-bottom: 4px solid transparent;

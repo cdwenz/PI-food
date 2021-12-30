@@ -1,5 +1,5 @@
 body{
-  background-image: url("../src/img/soup-918422.jpg");
+  background-image: url("../src/img/pexels-tara-winstead-6694162.jpg");
   background-repeat: no-repeat;
   background-size: cover;
   background-attachment: fixed;
@@ -15,7 +15,8 @@ body{
   left: 0;
   width: 100%;
   height: fit-content;
-  background-image: url("../src/img/soup-918422.jpg");
+  background-image: url("../src/img/pexels-tara-winstead-6694162.jpg");
+  backdrop-filter: blur(5px);
   background-color: #ffffff56;
   background-size:cover;
   background-attachment: fixed;
