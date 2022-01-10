@@ -10,7 +10,7 @@ export default function Card({recipe}){
         
             <div className={styles.grid}>
 					<figure className={styles.effectLexi}>
-						<img src={recipe.image?recipe.image:img} alt=""/>
+						<img src={recipe.image?recipe.image:img} alt="photo"/>
 						<figcaption>
 							<h3>{nameA} <span>{nameB}</span></h3>
 							<p>{recipe.diets.join(' ')}</p>
